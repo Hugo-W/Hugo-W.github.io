@@ -28,8 +28,8 @@ twitter_username: ""
 github_username:  Hugo-W
 
 # Build settings
-#theme: minima
-remote-theme: fongandrew/hydeout
+theme: minima
+#remote-theme: fongandrew/hydeout
 plugins:
   - jekyll-feed
 
