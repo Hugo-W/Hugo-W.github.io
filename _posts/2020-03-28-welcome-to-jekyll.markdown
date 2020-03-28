@@ -26,7 +26,10 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 
 ## Sketches
 
-For the simulator go [here](https://hugo-w.github.io/p5sketch/Collisions2Dbox/index.html).
+For the simulator go [here](https://hugo-w.github.io/p5sketch/CollisionsBox2D/).
+
+For the cam optical flow thingy [there](https://hugo-w.github.io/p5sketch/CamSketch/).
+
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
