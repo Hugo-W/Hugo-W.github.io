@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>CollisionsBox2D</title>
+	<script src="../lib/box2d-html5.js"></script>
+	<script src="../lib/box2d-helper.js"></script>
+	<script src="../lib/p5.js"></script>
+	<script src="../lib/p5.dom.js"></script>
+	<script src="CollisionListener.js"></script>
+	<script src="Ball.js"></script>
+	<script src="Surface.js"></script>
+	<script src="Histogram.js"></script>
+	<script src="sketch.js"></script>
+
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			overflow: visible;
+		}
+		canvas {
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+<h1>Expo Growth Simulator</h1>
+
+<p>A quick and dirty simulator of disease spread that reproduces the resulting logistic map of population growth.</p>
+<p>We can observe an early exponential growth followed by the ceiling effect/</p>
+
+<p>One can try different scenarii:</p>
+<ul>
+	<li><b>Normal case</b> (click on Reset to start over): every one can move freely</li>
+	<li><b>Social distancing:</b> 3/4 of the population is immobilised</li>
+	<li><b>Partial lockedown:</b> 1/4 of the population is locked and can (almost) not meet the other... But complete lockedown is impossible, so there is a small gap.</li>
+</ul>
+
+<div id="sketch-div"></div>
+<div id="slider1-div">
+	<p>Value: <span id="outval"></span></p>
+</div>
+
+<script> 
+	var slider1 = document.getElementById("slider1-div"); 
+	var output = document.getElementById("outval"); 
+	output.innerHTML = slider1.children[0].value
+</script> 
+
+<p></p>
+
+</body>
+
+</html>
