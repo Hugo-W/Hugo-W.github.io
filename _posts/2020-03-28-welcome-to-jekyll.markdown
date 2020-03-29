@@ -33,3 +33,10 @@ Very simple sketch, a ball orbiting around mouse position. Traces is shown with 
 Damping is on at the moment (hence ball is spiralling towards focus).
 
 [Sketch](/p5sketch/OrbitalMouse/)
+
+
+## Arrows
+
+Some recursivity... 
+
+[Sketch](/p5sketch/Arrows/)
