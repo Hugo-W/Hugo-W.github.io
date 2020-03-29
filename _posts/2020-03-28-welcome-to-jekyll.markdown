@@ -1,36 +1,37 @@
 ---
 layout: post
-title:  "Some simulator..."
+title:  "Processing (p5.js) Sketches"
 date:   2020-03-28 12:02:49 +0000
-categories: jekyll update
+categories: p5
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
+Here I am storing all p5 sketches. Hosting on github pages allows me to quickly visualize and/or share them through the web.
 
-`YEAR-MONTH-DAY-title.MARKUP`
+## Optical flow through webcam
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+In this sketch, the optical flow cmoputed from the webcam is used to hit a ball with simple physics.
 
-Jekyll also offers powerful support for code snippets:
+[Sketch](https://hugo-w.github.io/p5sketch/CamSketch/)
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+## Epidemic Simulator
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+This is a simple toy model of exponential growth, inspired from what I saw elsewhere. But notably, 3Blue1Brown did an amazing video mimicking this simulation too.
+Here We simply have every person as a randomly moving ball that when it collides when another can transmit its infected states. Lockedown and social distancing scenario are available, and the real-time build up of an histogram is shown to observe the potential flattening of the peak.
 
-## Sketches
+[Sketch](https://hugo-w.github.io/p5sketch/CollisionsBox2D/)
 
-For the simulator go [here](https://hugo-w.github.io/p5sketch/CollisionsBox2D/).
+## DLA
 
-For the cam optical flow thingy [there](https://hugo-w.github.io/p5sketch/CamSketch/).
+The diffusion -limited-agglomeration algorithm at play. Although the random walks are drifting towards the center to speed-up the growth of the cluster, and some interactivity allows the user to click anywhere to seed new walkers spawning under the mouse.
+
+[Sketch](/p5sketch/DLA/)
 
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+## Orbits
+
+Very simple sketch, a ball orbiting around mouse position. Traces is shown with alternating colours.
+Damping is on at the moment (hence ball is spiralling towards focus).
+
+[Sketch](https://hugo-w.github.io/p5sketch/OrbitalMouse/)
+Try:
+[local link](/p5sketch/OrbitalMouse/)
