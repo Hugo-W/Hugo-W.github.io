@@ -9,7 +9,7 @@ Here I am storing all p5 sketches. Hosting on github pages allows me to quickly 
 
 ## Optical flow through webcam
 
-In this sketch, the optical flow cmoputed from the webcam is used to hit a ball with simple physics.
+In this sketch, the optical flow computed from the webcam is used to hit a ball with simple physics.
 
 [Sketch](/p5sketch/CamSketch/)
 
@@ -22,7 +22,7 @@ Here We simply have every person as a randomly moving ball that when it collides
 
 ## DLA
 
-The diffusion -limited-agglomeration algorithm at play. Although the random walks are drifting towards the center to speed-up the growth of the cluster, and some interactivity allows the user to click anywhere to seed new walkers spawning under the mouse.
+The diffusion-limited aggregation ([DLA]) at play. Although the random walks are drifting towards the center to speed-up the growth of the cluster, and some interactivity allows the user to click anywhere to seed new walkers spawning under the mouse.
 
 [Sketch](/p5sketch/DLA/)
 
@@ -40,3 +40,5 @@ Damping is on at the moment (hence ball is spiralling towards focus).
 Some recursivity... 
 
 [Sketch](/p5sketch/Arrows/)
+
+[DLA][https://en.wikipedia.org/wiki/Diffusion-limited_aggregation]
