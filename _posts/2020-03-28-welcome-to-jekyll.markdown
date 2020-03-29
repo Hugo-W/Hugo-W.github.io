@@ -22,7 +22,7 @@ Here We simply have every person as a randomly moving ball that when it collides
 
 ## DLA
 
-The diffusion-limited aggregation ([DLA]) at play. Although the random walks are drifting towards the center to speed-up the growth of the cluster, and some interactivity allows the user to click anywhere to seed new walkers spawning under the mouse.
+The diffusion-limited aggregation ([DLA][dla]) at play. Although the random walks are drifting towards the center to speed-up the growth of the cluster, and some interactivity allows the user to click anywhere to seed new walkers spawning under the mouse.
 
 [Sketch](/p5sketch/DLA/)
 
@@ -41,4 +41,4 @@ Some recursivity...
 
 [Sketch](/p5sketch/Arrows/)
 
-[DLA][https://en.wikipedia.org/wiki/Diffusion-limited_aggregation]
+[dla]: https://en.wikipedia.org/wiki/Diffusion-limited_aggregation
