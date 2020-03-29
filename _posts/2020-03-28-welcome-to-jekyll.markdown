@@ -11,14 +11,14 @@ Here I am storing all p5 sketches. Hosting on github pages allows me to quickly 
 
 In this sketch, the optical flow cmoputed from the webcam is used to hit a ball with simple physics.
 
-[Sketch](https://hugo-w.github.io/p5sketch/CamSketch/)
+[Sketch](/p5sketch/CamSketch/)
 
 ## Epidemic Simulator
 
 This is a simple toy model of exponential growth, inspired from what I saw elsewhere. But notably, 3Blue1Brown did an amazing video mimicking this simulation too.
 Here We simply have every person as a randomly moving ball that when it collides when another can transmit its infected states. Lockedown and social distancing scenario are available, and the real-time build up of an histogram is shown to observe the potential flattening of the peak.
 
-[Sketch](https://hugo-w.github.io/p5sketch/CollisionsBox2D/)
+[Sketch](/p5sketch/CollisionsBox2D/)
 
 ## DLA
 
@@ -32,6 +32,4 @@ The diffusion -limited-agglomeration algorithm at play. Although the random walk
 Very simple sketch, a ball orbiting around mouse position. Traces is shown with alternating colours.
 Damping is on at the moment (hence ball is spiralling towards focus).
 
-[Sketch](https://hugo-w.github.io/p5sketch/OrbitalMouse/)
-Try:
-[local link](/p5sketch/OrbitalMouse/)
+[Sketch](/p5sketch/OrbitalMouse/)
