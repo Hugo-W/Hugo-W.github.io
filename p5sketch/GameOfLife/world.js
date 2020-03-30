@@ -61,7 +61,7 @@ class World {
 
     draw(mode){
         //this.livecells.add(this.getWorldCoord(mouseX, mouseY));
-        if (mouseX<width && mouseY< height) {
+        if (mouseX<width && mouseY< height && mouseX>=0 && mouseY>=0) {
             let worldpos = this.getWorldCoord(mouseX, mouseY);
             console.log("drawing at " + worldpos)
             this.world[worldpos.x][worldpos.y] = mode;
@@ -89,7 +89,7 @@ class World {
 }
 
 function make2DArray(rows, cols) {
-    let out = new Array(rows);
+    let out = new Array(cols);
     for (var i=0; i<cols; i++) {
         out[i] = new Array(rows);
         for (var j=0; j<rows; j++) {
