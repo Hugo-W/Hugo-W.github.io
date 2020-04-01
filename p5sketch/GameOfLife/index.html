@@ -16,13 +16,24 @@
 		body {
 			margin:0;
 			padding:0;
-			overflow: hidden;
+			overflow: visible;
 		}
 		canvas {
 			margin:auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	</style>
 </head>
 <body>
+<h1>Conway's Game of Life</h1>
+<p>Simply three rules to dictate all this behaviour:</p>
+<ul>
+	<li>"on" cell with two or three live neighbours stay alive</li>
+	<li>"off" cell with three alive neighbours becomes live</li>
+	<li>all other die</li>
+</ul>
+<p>Use the button and drop down to interact with the game. Reset it, draw on it or drag and drop pre-existing shapes to explore the compelxity of cellular automata.</p>
 </body>
 </html>
