@@ -49,9 +49,7 @@ This is simulation of Conway's Game of life (see [here](https://en.wikipedia.org
 
 [Sketch](/p5sketch/GameOfLife/)
 
-## Flui Simulator
-
-## Game of Life
+## Fluid Simulator
 
 Quick and dirty fluid dynamic simulator...
 
