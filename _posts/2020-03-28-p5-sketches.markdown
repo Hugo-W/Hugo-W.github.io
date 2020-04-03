@@ -48,3 +48,11 @@ Some recursivity...
 This is simulation of Conway's Game of life (see [here](https://en.wikipedia.org/wiki/Conway's_Game_of_Life)). Use the arrow keys to run. Click to draw pattern, middle mouse click to erase. Can import some templates using buttons.
 
 [Sketch](/p5sketch/GameOfLife/)
+
+## Flui Simulator
+
+## Game of Life
+
+Quick and dirty fluid dynamic simulator...
+
+[Sketch](/p5sketch/FluidFlow/)
