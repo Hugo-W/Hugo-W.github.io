@@ -1,7 +1,7 @@
 let fluid;
 let previous;
 let N = 80;
-let SCALE = 6;
+let SCALE;
 
 // Constants
 let dt = 0.1;
@@ -12,6 +12,7 @@ let inject = 100;
 let trender;
 
 function reset() {
+	
 	fluid = new Flow2D(N, N, SCALE);
 	fluid.boundary_density_fixed(0);
 	fluid.boundary_flow();
@@ -20,6 +21,7 @@ function reset() {
 }
 
 function setup() {
+	SCALE = floor(windowHeight / N);
 	createCanvas(N * SCALE, N * SCALE);
 
 	reset();
@@ -33,7 +35,7 @@ function draw() {
 	if (mouseIsPressed) {
 		previous.addDensity(mouseX, mouseY);
 		fluid.addDensity(mouseX, mouseY);
-		fluid.addVelocity();
+		// fluid.addVelocity();
 	}
 
 	// if (keyIsDown(RIGHT_ARROW)) {
@@ -59,3 +61,9 @@ function keyPressed() {
 		reset();
 	}
 }
+
+function touchMoved() {
+	fluid.addVelocity();
+	// prevent default
+	return false;
+  }
