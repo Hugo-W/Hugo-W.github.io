@@ -1,13 +1,14 @@
 let fluid;
 let previous;
-let N = 80;
+let N = 85;
 let SCALE;
 
 // Constants
 let dt = 0.1;
-let Diff_dens = 0.1;
-let visc = 10;
-let inject = 100;
+let Diff_dens = 0.05;
+let visc = 100;
+let inject_ink = 50;
+let inject_speed = inject_ink * 80;
 
 let trender;
 
@@ -21,7 +22,7 @@ function reset() {
 }
 
 function setup() {
-	SCALE = floor(windowHeight / N);
+	SCALE = floor(windowWidth / N);
 	createCanvas(N * SCALE, N * SCALE);
 
 	reset();
@@ -32,7 +33,7 @@ function setup() {
 function draw() {
 	background(51);	
 
-	if (mouseIsPressed) {
+	if (mouseIsPressed && (mouseButton === LEFT || touches.length==2)) {
 		previous.addDensity(mouseX, mouseY);
 		fluid.addDensity(mouseX, mouseY);
 		// fluid.addVelocity();
@@ -63,7 +64,9 @@ function keyPressed() {
 }
 
 function touchMoved() {
-	fluid.addVelocity();
+	if (mouseButton === CENTER || touches.length >= 1) {
+        fluid.addVelocity();
+    }
 	// prevent default
 	return false;
   }

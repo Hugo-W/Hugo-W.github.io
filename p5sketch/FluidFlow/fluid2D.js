@@ -21,13 +21,17 @@ class Flow2D {
 
     addDensity(i, j) {
         let xy = this.canvasCoordtoXY(i, j);
-        this.density[xy[0]][xy[1]] += inject * dt;
+        let x = constrain(xy[0], 1, this.size_x-2);
+        let y = constrain(xy[1], 1, this.size_y-2);
+        this.density[x][y] += inject_ink * dt;
     }
 
     addVelocity() {
         let xy = this.canvasCoordtoXY(mouseX, mouseY);
-        this.flow.vx[xy[0]][xy[1]] += inject * (mouseX-pmouseX);
-        this.flow.vy[xy[0]][xy[1]] += inject * (mouseY-pmouseY);
+        let x = constrain(xy[0], 1, this.size_x-2);
+        let y = constrain(xy[1], 1, this.size_y-2);
+        this.flow.vx[x][y] += inject_speed * (mouseX-pmouseX) *dt;
+        this.flow.vy[x][y] += inject_speed * (mouseY-pmouseY) *dt;
     }
 
     boundary_density_fixed(val) {
@@ -139,8 +143,8 @@ class Flow2D {
     renderDensity() {
         noStroke();
 
-        for (var x=0; x<this.size_x; x++) {
-            for (var y=0; y<this.size_y; y++) {
+        for (var x=1; x<this.size_x-1; x++) {
+            for (var y=1; y<this.size_y-1; y++) {
                 fill(int(this.density[x][y] * 255));
                 rect(x*this.scale, y*this.scale, this.scale, this.scale);
             }
@@ -150,8 +154,8 @@ class Flow2D {
     renderFlow() {
         // noFill();
         stroke(255);
-        for (var x=0; x<this.size_x; x++) {
-            for (var y=0; y<this.size_y; y++) {
+        for (var x=1; x<this.size_x-1; x++) {
+            for (var y=1; y<this.size_y-1; y++) {
                 let v = createVector(this.flow.vx[x][y], this.flow.vy[x][y]);
                 let pos = createVector(x*this.scale + this.scale/2, y*this.scale + this.scale/2);
                 line(pos.x, pos.y, pos.x + v.x, pos.y + v.y);
