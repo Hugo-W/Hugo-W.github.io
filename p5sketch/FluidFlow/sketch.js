@@ -33,7 +33,7 @@ function setup() {
 function draw() {
 	background(51);	
 
-	if (mouseIsPressed && (mouseButton === LEFT || touches.length==2)) {
+	if (mouseIsPressed && (mouseButton === LEFT)) {
 		previous.addDensity(mouseX, mouseY);
 		fluid.addDensity(mouseX, mouseY);
 		// fluid.addVelocity();
@@ -43,7 +43,7 @@ function draw() {
 	fluid.updateFlow(previous);
 	// }
 
-	if (keyIsPressed && keyIsDown(UP_ARROW)) {
+	if ((keyIsPressed && keyIsDown(UP_ARROW)) || touches.length==2) {
 		fluid.renderFlow();
 	} else {
 		fluid.renderDensity();
