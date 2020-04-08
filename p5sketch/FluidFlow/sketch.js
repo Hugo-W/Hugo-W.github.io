@@ -33,7 +33,7 @@ function setup() {
 function draw() {
 	background(51);	
 
-	if (mouseIsPressed && (mouseButton === LEFT)) {
+	if (mouseIsPressed) {
 		previous.addDensity(mouseX, mouseY);
 		fluid.addDensity(mouseX, mouseY);
 		// fluid.addVelocity();
