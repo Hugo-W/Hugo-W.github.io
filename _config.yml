@@ -26,11 +26,14 @@ baseurl: "/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  Hugo-W
 
+permalink: /:categories/:title:output_ext
+
 # Build settings
 theme: minima
 #remote-theme: fongandrew/hydeout
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
