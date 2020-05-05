@@ -60,3 +60,12 @@ Quick and dirty fluid dynamic simulator...
 Some sound vizualization from microphone or sound file...
 
 [Sketch](/p5sketch/SoundVizualizer/)
+
+## Flocking
+
+[Sketch](/javasketch/Flocking/)
+
+
+## 1D CA
+
+[Sketch](/javasketch/CA_1D/)
