@@ -68,4 +68,4 @@ Some sound vizualization from microphone or sound file...
 
 ## 1D CA
 
-[Sketch](/javasketch/CA_1D/)
+[Sketch](/p5sketch/CA_1D/)

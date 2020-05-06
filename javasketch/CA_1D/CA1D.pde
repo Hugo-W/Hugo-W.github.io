@@ -1,16 +1,13 @@
-import java.util.Arrays;
-import java.lang.Integer;
+let ca;
+let history;
+let tmp;
+let res;
+let hist_length;
+let current_row = 0;
+let run = true;
 
-CA ca;
-boolean history[][];
-boolean[][] tmp;
-float res;
-int hist_length;
-int current_row = 0;
-boolean run = true;
-
-int N = 400;
-int ruleNumber = 90; // 222 Uniformity / 190: repetition / 30: random / 110: complexity (bonus: 90 Serpinksky fractl)
+const N = 400;
+const ruleNumber = 90; // 222 Uniformity / 190: repetition / 30: random / 110: complexity (bonus: 90 Serpinksky fractl)
 String ruleString;
 
 void setup() {
