@@ -1,0 +1,102 @@
+# Friday, September 8, 2017
+
+First log to try this extension (from vs code).
+
+## Deep learning work
+
+Today, worked on laptop for continuing work on KERAS-RNNLM...
+More precisely, worked on the implementation of the data sgtructure such that each samples are just shifted version of previous words, a sentence covers now several sample in one batch...
+
+## Other misc.
+
+Fixed computer, main station (DH-PC) to start ubuntu, and redid all the updates...
+
+## Perso
+
+Wanna dance, cry, love, laugh, sing, play, and write even more feelings down, hit the keys with frenesy and make them beat my heartbeat, or synchronize, anything thst make me feel glide, as it is all about gliding. Everything is always *all about something*.
+# Saturday, September 9, 2017
+
+## PhD
+
+FInished a good bulk of RNNlm on Keras.
+
+## Deep learning
+
+downloaded text8 from [here](http://mattmahoney.net/dc/textdata) to store on laptop in Storage/Dataset_asr.
+
+
+# Monday, September 11, 2017
+
+## Imperial work:
+
+New start motivated by Tobias’ remark about this being my **last year of PhD**! Must now work on:
+
+- Finish a first draft on manuscript about surprisal
+- Produce more figures for talk in Southampton
+- Clean all my other figures, font must be sans-serif !
+- Birdsong might become a paper?
+
+Another idea mentioned in this meeting was that I should do my thesis as a grouping of 3 publications (german way, ie *efficient* way).
+
+## Other
+
+Well, Deep learning: RNNLM with Keras LSTM, still overfiting, my `Keras-RNNLM` is now more robust, accept pretty much any text/word2vec embedding trained representations, but still fails to train properly (test much higher than training loss, and increasing between each epochs).
+
+Though, adding `Dropout` largely helped to maintain a slow learning which avoids overfitting.
+# Wednesday, November 15, 2017
+
+Please make thgese stupid LSTM work...
+# Wednesday, July 22, 2020
+
+## Tasks
+
+- Finish paper and send manuscript to Tobias
+- Lots of subtask in above...
+
+## Notes
+
+Found this neat little command-line weather forecast:
+
+```bash
+curl wttr.in
+```
+
+ Which outputs:
+
+ Weather report: Camberwell, United Kingdom
+
+     \  /       Partly cloudy
+   _ /"".-.     22..24 °C      
+     \_(   ).   ↗ 11 km/h      
+     /(___(__)  10 km          
+                0.0 mm         
+                                                       ┌─────────────┐                                                       
+┌──────────────────────────────┬───────────────────────┤  Wed 22 Jul ├───────────────────────┬──────────────────────────────┐
+│            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│    \  /       Partly cloudy  │               Cloudy         │    \  /       Partly cloudy  │    \  /       Partly cloudy  │
+│  _ /"".-.     19 °C          │      .--.     22 °C          │  _ /"".-.     19 °C          │  _ /"".-.     16 °C          │
+│    \_(   ).   ↑ 5-6 km/h     │   .-(    ).   ↗ 10-11 km/h   │    \_(   ).   ↗ 18-22 km/h   │    \_(   ).   ↗ 10-19 km/h   │
+│    /(___(__)  10 km          │  (___.__)__)  10 km          │    /(___(__)  10 km          │    /(___(__)  10 km          │
+│               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │
+└──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
+                                                       ┌─────────────┐                                                       
+┌──────────────────────────────┬───────────────────────┤  Thu 23 Jul ├───────────────────────┬──────────────────────────────┐
+│            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│               Cloudy         │    \  /       Partly cloudy  │    \  /       Partly cloudy  │               Cloudy         │
+│      .--.     18 °C          │  _ /"".-.     15 °C          │  _ /"".-.     18 °C          │      .--.     13..14 °C      │
+│   .-(    ).   ↗ 18-22 km/h   │    \_(   ).   ↗ 12-17 km/h   │    \_(   ).   ↗ 22-31 km/h   │   .-(    ).   ↗ 13-24 km/h   │
+│  (___.__)__)  10 km          │    /(___(__)  10 km          │    /(___(__)  10 km          │  (___.__)__)  10 km          │
+│               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │
+└──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
+                                                       ┌─────────────┐                                                       
+┌──────────────────────────────┬───────────────────────┤  Fri 24 Jul ├───────────────────────┬──────────────────────────────┐
+│            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│               Cloudy         │  _`/"".-.     Light rain sho…│  _`/"".-.     Patchy rain po…│  _`/"".-.     Patchy rain po…│
+│      .--.     20 °C          │   ,\_(   ).   21 °C          │   ,\_(   ).   21 °C          │   ,\_(   ).   18 °C          │
+│   .-(    ).   → 11-13 km/h   │    /(___(__)  → 10-12 km/h   │    /(___(__)  → 10-14 km/h   │    /(___(__)  ↗ 9-18 km/h    │
+│  (___.__)__)  10 km          │      ‘ ‘ ‘ ‘  10 km          │      ‘ ‘ ‘ ‘  9 km           │      ‘ ‘ ‘ ‘  9 km           │
+│               0.0 mm | 0%    │     ‘ ‘ ‘ ‘   0.2 mm | 79%   │     ‘ ‘ ‘ ‘   1.6 mm | 68%   │     ‘ ‘ ‘ ‘   0.2 mm | 73%   │
+└──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
