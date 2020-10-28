@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Hugo Weissbart" />
+  <title>Projects on Compositionality</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="/assets/custom.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Regular Noise &amp; Random Patterns</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/perso/Projects.html">Projects</a><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<header id="title-block-header">
+<h1 class="title">Projects on Compositionality</h1>
+<p class="author">Hugo Weissbart</p>
+</header>
+<nav id="TOC" role="doc-toc">
+
+</nav>
+<h1 id="notes-references-ideas-and-journaling">Notes, references, ideas and journaling</h1>
+<p>This document contains log and notes on projects regarding study on compositionality.</p>
+<h2 id="summary">Summary</h2>
+<p>For this study-arch, I will focus on different computational and cognitive models for composition in language processing. This can deal with either syntactic composition, such as the formation of phrase structures, or with semantic relations. One goal is then to come up with new computational model with predictive power to test possible hypothesis and play them against observations. Another goal is then to compare results of simulations across those different models against neuroimaging data (MEG/EEG mainly).</p>
+<p>So in summary we have:</p>
+<ul>
+<li>Toy model of composition cognitive model with oscillations (syntax, structure embedded in oscillatory dynamics)</li>
+<li>Analyzing brain data:
+<ul>
+<li>Finding pairs/structures in naturalistic stimuli</li>
+<li>Using existing computational model</li>
+</ul></li>
+<li>Trying existing model/adapt them</li>
+</ul>
+<h2 id="notes-and-ideas">Notes and ideas</h2>
+<ul>
+<li>sentence gestatz (SG, <a href="../../Biblio/rabovsky2018.pdf" title="Link to file">paper</a>) for meaning representation, coupled with DORA for phase alignment and relational learning?</li>
+<li>add reservoir networks inside those SG, DORA, …?</li>
+<li>VAE for sentence representations</li>
+</ul>
+<h3 id="project-1-toy-model-of-composition">Project 1: Toy Model of composition</h3>
+<p>Hierarchical representations are embedded in the neural trajectories, in their dynamics.</p>
+<p>Test <em>hierarchy</em> of reservoir networks (ref: <a href="https://www.sciencedirect.com/science/article/pii/S0893608018302223?via%3Dihub" title="Link to article">deep echo state networks</a>) to achieve different scales (bottom &gt; acoustic, high &gt; syntactic). beta / delta…</p>
+<h4 id="kuramoto-model">Kuramoto model</h4>
+<p>This project has been in our mind for a bit. The general equation for a Kuramoto model is:</p>
+<p><span class="math display">\[
+\dot{\theta_i} = \omega_i + \sum_{i-1}^Nk_{ij}\sin(\theta_j - \theta_i)
+\]</span></p>
+<p>A random networks of couple oscillators can be simulated and summarised as follow using my <code>Kuramoto</code> python class:</p>
+<figure>
+<img src="/assets/rdm_kuramoto_summary.png" style="width:75.0%" alt="sumamry example" /><figcaption aria-hidden="true">sumamry example</figcaption>
+</figure>
+<p>Inference models can be built to estimate Kuramoto model from time-series data, see <a href="../../Documents/Literature/Kuramoto/bayesian_dynamic_model_oscillators_tuto.pdf" title="Link to file">here</a> and <a href="https://laszukdawid.com/2015/05/18/bayesian-inference-in-kuramoto-model/" title="Link to blog article">this blog article</a>.</p>
+<p>I feel like we need to incorporate the idea of phase-amplitude coupling though, as seen in <a href="../../Documents/Literature/Kuramoto/Friston_kuramoto_PAC.pdf" title="Link to file">this article</a>.</p>
+<h3 id="project-2-meg-and-eeg-analysis">Project 2: MEG and EEG analysis</h3>
+<ul>
+<li>Find all pairs of word with the structure: <code>N - ADJ</code> or <code>ADJ - N</code></li>
+<li>Possibly use a NER to get back to which predicate is a person etc…?</li>
+<li>Decoding Adj from previous neural representation of the compound…?</li>
+</ul>
+<p>For now, in the English text of my EEG dataset, I found:</p>
+<ul>
+<li>170 compounds (N-ADJ)</li>
+<li>80% of nouns are unique (so some are repeated twice, very few)</li>
+<li>67% of unique adjectives, some more repeats (max repeat for “old”, 8 times, then “few”, “little”, “own”, “female”</li>
+</ul>
+<p>There could be much more added to this namely constituents such as <code>ADV-V</code>, etc… This has been discussed with <em>Ryan</em>, the project then also touches ideas from composition of <em>meaning</em> and semantics.</p>
+<h5 id="decoding">Decoding</h5>
+<p>It seems unlikely to be able to classify individual words, so one better idea could be to classify/decode <strong>animacy</strong> or <strong>word category</strong> from either the entire <strong>2 words phrase</strong> or from the <strong>adjective alone</strong>.</p>
+<h5 id="role-of-jj-verbal-phrase-vs-noun-phrase">Role of JJ: Verbal phrase vs Noun Phrase</h5>
+<p>Another idea would be to compare adjective attributed to a noun via a verbal phrase or directly as an adjective in a nominal phrase.</p>
+<h3 id="project-3-existing-model-to-adaptlearn-from">Project 3: Existing model to adapt/learn from</h3>
+<ul>
+<li>VAERNNLM</li>
+<li>Reservoir networks</li>
+<li>Deep ESN</li>
+<li>DORA</li>
+<li>SG</li>
+</ul>
+<h2 id="bibliography">Bibliography</h2>
+<ul>
+<li><a href="../../Biblio/rabovsky2018.pdf" title="Link to file">Article on SG, 2018, M. Rabovsky, Nature human behavuour</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0893608018302223?via%3Dihub" title="Link to article">Article on Deep ESN, 2018</a></li>
+<li><a href="https://laszukdawid.com/2015/05/18/bayesian-inference-in-kuramoto-model/" title="Link to blog article">Blog article for Kuramoto modelling in Python</a></li>
+<li><a href="../../Documents/Literature/Kuramoto/bayesian_dynamic_model_oscillators_tuto.pdf" title="Link to file">Article PDF for Bayesian modelling of dynamic systems</a></li>
+<li><a href="../../Documents/Literature/Kuramoto/Friston_kuramoto_PAC.pdf" title="Link to file">Phase Amplitude and Kuramoto models - Friston 2020</a></li>
+</ul>
+<h2 id="log">Log</h2>
+<h4 id="section">22/09/20</h4>
+<ul>
+<li>Started to write this log project/outline</li>
+<li>got some articles out (not yet read)</li>
+<li>Starting the NLP/text mining implementation in order to extract the relevant structures from my data</li>
+</ul>
+<h4 id="section-1">23/09/20</h4>
+<ul>
+<li>Get <code>N - ADJ</code> phrases from text, apply Stanford parser and find those NP 2 leaves structures</li>
+<li>Counted pairs, and looked at number of occurrences of each words</li>
+</ul>
+<h4 id="section-2">20/10/20</h4>
+<ul>
+<li>Redid the Kuramoto simulation code</li>
+<li>because lost everything before</li>
+<li>need to reput the biblio here… -&gt; DONE</li>
+</ul>
+<h4 id="section-3">21/10/20</h4>
+<ul>
+<li>Kuramoto improved with jacobian added</li>
+<li>need to add noise?</li>
+<li>Bayesian still to do</li>
+</ul>
+<footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Regular Noise &amp; Random Patterns</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Regular Noise &amp; Random Patterns</li><li><a class="u-email" href="mailto:hugo.<surname> @ gmail.com">hugo.<surname> @ gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Hugo-W"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Hugo-W</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Small stock of personal resources, ideas and wand-err.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>

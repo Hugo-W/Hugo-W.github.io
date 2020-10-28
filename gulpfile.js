@@ -71,7 +71,7 @@ function encrypt(password) {
       } else if (chunks.length > 1) {
         this.emit('error', new PluginError({
           plugin: 'Encrypt',
-          message: file.path + ': protected file has invalid front matter.'
+          message: file.path + ': protected file has invalid front matter. ' + chunks.length
         }));
         return callback();
       }
@@ -94,11 +94,17 @@ gulp.task('firewall:encrypt', () => {
     .pipe(gulp.dest('_posts'));
 });
 
+gulp.task('firewall:encrypt_perso', () => {
+  return gulp.src('_protected/perso/*.*')
+    .pipe(encrypt('Postvan8_8'))
+    .pipe(gulp.dest('perso'));
+});
+
 gulp.task('firewall:watch', () => {
   gulp.watch('_protected/*.*', gulp.series('firewall:encrypt'));
 });
 
-gulp.task('firewall', gulp.series('firewall:encrypt', 'firewall:watch',() => {}));
+gulp.task('firewall', gulp.series('firewall:encrypt', 'firewall:encrypt_perso', 'firewall:watch',() => {}));
 
 
 /*
