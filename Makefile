@@ -12,4 +12,7 @@ doc:
 	pandoc -c /assets/custom.css -s -B _includes/banner.html -A _includes/footer.html perso/projects/MOUS_TRFs/Project.md -t html --mathjax -o perso/projects/MOUS_TRFs/Project.html
 	pandoc -c /assets/custom.css -s -B _includes/banner.html -A _includes/footer.html perso/projects/PhaseTRF/Project.md -t html --mathjax -o perso/projects/PhaseTRF/Project.html
 
-all: sync doc
+encrypt:
+	gulp firewall-nowatch
+
+all: sync doc encrypt

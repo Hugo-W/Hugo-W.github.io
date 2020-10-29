@@ -105,6 +105,7 @@ gulp.task('firewall:watch', () => {
 });
 
 gulp.task('firewall', gulp.series('firewall:encrypt', 'firewall:encrypt_perso', 'firewall:watch',() => {}));
+gulp.task('firewall-nowatch', gulp.series('firewall:encrypt', 'firewall:encrypt_perso', async () => {}));
 
 
 /*

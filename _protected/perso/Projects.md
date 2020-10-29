@@ -10,8 +10,8 @@ Here is the summary of the different projects running now.
 
 |Project|sub-project|Link|Description|
 |-|:-:|:-:|-|
-|Compositionality|||
-|-|Personal|[Notes and log](/perso/projects/Compositionality/Project.html)|Several projects are embbeded here too[^1]|
+|Compositionality||[Notes and log](/perso/projects/Compositionality/Project.html)|All projects summary[^1]|
+|-|Personal|[Notes and log](/perso/projects/Compositionality/Project.html)|Several projects are embbeded here too|
 |-|With Ryan|[Notes](/perso/projects/Compositionality/Ryan/Project.html)|Two-word compounds, decoding/encoding of Adj or Noun....|
 |Phase dependent TRF||[Log file](/perso/projects/PhaseTRF/Project.html)|Can we find a different TRF depending on the phase of a slowly modulated signal (exogeneous or endogeneous)?|
 |MOUS||[Log file](/perso/projects/MOUS_TRFs/Project.html)|Supervising Sophie on the MOUS data analysis|
