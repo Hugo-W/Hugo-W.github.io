@@ -22,11 +22,14 @@ Another goal is then to compare results of simulations across those different mo
 
 So in summary we have:
 
-- Toy model of composition cognitive model with oscillations (syntax, structure embedded in oscillatory dynamics)
-- Analyzing brain data:
-    - Finding pairs/structures in naturalistic stimuli
+1. Toy model of composition cognitive model with oscillations (syntax, structure embedded in oscillatory dynamics):
+    - Kuramoto model
+    - Reservoir networks, layered/hierarchy of those
+2. Analyzing brain data:
+    - Finding pairs/structures in naturalistic stimuli and use genralisation trhough time as in [this paper][6]
+    - Mapping between MEEG and latent manifolds learned in VAERNN
     - Using existing computational model
-- Trying existing model/adapt them
+3. Trying existing model/adapt them
 
 ## Notes and ideas
 
@@ -38,7 +41,7 @@ So in summary we have:
 
 Hierarchical representations are embedded in the neural trajectories, in their dynamics.
 
-Test _hierarchy_ of reservoir networks (ref: [deep echo state networks][2]) to achieve different scales (bottom > acoustic, high > syntactic). beta / delta...
+Test _hierarchy_ of reservoir networks (ref: [deep echo state networks][2]) to achieve different scales (bottom > acoustic, high > syntactic). beta / delta coupling?
 
 #### Kuramoto model
 
@@ -54,7 +57,7 @@ A random networks of couple oscillators can be simulated and summarised as follo
 
 Inference models can be built to estimate Kuramoto model from time-series data, see [here][4] and [this blog article][3].
 
-I feel like we need to incorporate the idea of phase-amplitude coupling though, as seen in [this article][5].
+I feel like we need to incorporate the idea of **phase-amplitude coupling** though, as seen in [this article with K. Friston][5].
 
 ### Project 2: MEG and EEG analysis
 
@@ -70,11 +73,17 @@ For now, in the English text of my EEG dataset, I found:
 
 There could be much more added to this namely constituents such as `ADV-V`, etc... This has been discussed with _Ryan_, the project then also touches ideas from composition of _meaning_ and semantics.
 
-##### Decoding
+#### Decoding
 
 It seems unlikely to be able to classify individual words, so one better idea could be to classify/decode **animacy** or **word category** from either the entire **2 words phrase** or from the **adjective alone**.
 
-##### Role of JJ: Verbal phrase vs Noun Phrase
+_02/11/2020_ - As seen in [this article][6] we could retrive/decode brain representation of the first word in the representation of the second word within a 2-words compound.
+
+The idea, borrowed from the article mentionned above is summarised in the figure below.
+
+![Temporal Generalisation](/assets/TGM_ADJ_NOUN_Fysche2019.png){width=75%}
+
+#### Role of JJ: Verbal phrase vs Noun Phrase
 
 Another idea would be to compare adjective attributed to a noun via a verbal phrase or directly as an adjective in a nominal phrase.
 
@@ -93,6 +102,7 @@ Another idea would be to compare adjective attributed to a noun via a verbal phr
 * [Blog article for Kuramoto modelling in Python][3]
 * [Article PDF for Bayesian modelling of dynamic systems][4]
 * [Phase Amplitude and Kuramoto models - Friston 2020][5]
+* [Adj-noun phrases in the brain - Fyshe 2019][6]
 
 ## Log
 
@@ -119,8 +129,15 @@ Another idea would be to compare adjective attributed to a noun via a verbal phr
 * need to add noise?
 * Bayesian still to do
 
+#### 02/11/20
+
+* Completed some biblio about Fyshe 2019, added the figure to explain the idea
+* Started some code to extract also `Adv-VB` phrases
+* decoding started...
+
 [1]: ../../Biblio/rabovsky2018.pdf "Link to file"
 [2]: https://www.sciencedirect.com/science/article/pii/S0893608018302223?via%3Dihub "Link to article"
 [3]: https://laszukdawid.com/2015/05/18/bayesian-inference-in-kuramoto-model/ "Link to blog article"
 [4]: ../../Documents/Literature/Kuramoto/bayesian_dynamic_model_oscillators_tuto.pdf "Link to file"
 [5]: ../../Documents/Literature/Kuramoto/Friston_kuramoto_PAC.pdf "Link to file"
+[6]: ../../Documents/Literature/Composition/Fyshe_etal2019.pdf "Link to file"
