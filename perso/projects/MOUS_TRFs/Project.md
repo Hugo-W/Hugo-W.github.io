@@ -52,7 +52,13 @@ Anyway, it worked well enough and gave me the following figures.
 
 ![Envelope, broadband TRFs for each subjects](/assets/indiv_TRF_envelope.png)
 
-![Envelope TRF, grand average](/assets/grandAvg_TRF_envelope.png){width=50%}
+![Envelope TRF, grand average](/assets/grandAvg_TRF_envelope.png){width=33%}
+
+Now we are conducting the analysis using the Fieldtrip processed MEG data imported into MNE and Python. We extracted all word onset as well as word frequency and could already see a difference (here for 30 subjects) between sentence and word list conditions. The effect seen in word onset and word frequency must be ran against statistical analysis and also we must now proceed to the reconstruction accuracies with different model to draw further conclusions.
+
+![Grand average (30 subjects) envelope TRFs for each condition](/assets/grd_avg_trfs_30subj.png){width=50%}
+
+![Grand average (10 subjects) envelope + word features TRFs (red: word list condition)](/assets/wordlvl_trf_sentences.png){width=75%}
 
 ### Log
 
@@ -74,3 +80,8 @@ Anyway, it worked well enough and gave me the following figures.
 * these past days I have finished resampling the few subjects I have and computing TRF across them
 * updating logs and adding figures to this readme
  
+#### 10/11/20
+
+* now importing data to MNE from the processed fieldtrip structures
+* word onset and word frequency extracted automatically, now using the **SUBTXT-NL** dataset for 1-grams
+* Finished to implement the word-level models in the example notebook

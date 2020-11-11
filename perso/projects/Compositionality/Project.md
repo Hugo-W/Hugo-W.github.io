@@ -37,6 +37,10 @@ So in summary we have:
 * add reservoir networks inside those SG, DORA, ...?
 * VAE for sentence representations
 
+_10/11/20_ : This is a new proposition and results from a [recent paper](https://www.researchgate.net/publication/345184917_Overt_and_covert_prosody_are_reflected_in_neurophysiological_responses_previously_attributed_to_grammatical_processing) (sept. 2020) showing the confound between prosody and syntactic cues, in a way diminishing the impact of Ding and Peoppel 2016's paper on syntax. It has to be kept in mind for my publication of personal paper 2, or pfuture work on _merge_/composition of syntax?
+
+![Schematic of the proposition by A. Glushko, 2020](/assets/Prosody_vs_Syntax.jpg)}{width=33%}
+
 ### Project 1: Toy Model of composition
 
 Hierarchical representations are embedded in the neural trajectories, in their dynamics.
@@ -73,6 +77,8 @@ For now, in the English text of my EEG dataset, I found:
 
 There could be much more added to this namely constituents such as `ADV-V`, etc... This has been discussed with _Ryan_, the project then also touches ideas from composition of _meaning_ and semantics.
 
+`ADV-V` are quite difficult to track in the parse tree, and it seems also that `JJ-NN` may occur more than it first seem. Going through the constituency parse tree might not be solution... Maybe better to go through a dependency graph? Using `amod` attribute?
+
 #### Decoding
 
 It seems unlikely to be able to classify individual words, so one better idea could be to classify/decode **animacy** or **word category** from either the entire **2 words phrase** or from the **adjective alone**.
@@ -82,6 +88,8 @@ _02/11/2020_ - As seen in [this article][6] we could retrive/decode brain repres
 The idea, borrowed from the article mentionned above is summarised in the figure below.
 
 ![Temporal Generalisation](/assets/TGM_ADJ_NOUN_Fysche2019.png){width=75%}
+
+_10/11/2020_: So far, big fail at decoding only ADj vs NN in ERP and temporal generalisation (multivariate decoding for each lag).... Big Big Fail.
 
 #### Role of JJ: Verbal phrase vs Noun Phrase
 
@@ -134,6 +142,22 @@ Another idea would be to compare adjective attributed to a noun via a verbal phr
 * Completed some biblio about Fyshe 2019, added the figure to explain the idea
 * Started some code to extract also `Adv-VB` phrases
 * decoding started...
+
+#### 09/11/2020
+
+* A bit more work on the MEG analysis for composition, trying to extract the onset of those 2-words phrase structures
+* Problem encountered (as in the past already...):
+    - punctuation still present in parse but not in TextGrid
+    - "M." is only "M" in TextGrid (probably not even mapped to "mister" phonemes...)
+    - Some words are not separated in TextGrid data such as "I've", "Does'nt" but they are in the parse
+    - Compound word are separated in TextGrid data but not in Stanford parser (tennis-court)
+    - Some words still have a trailing whitespace in the TextGrid Data!!!
+
+#### 10/11/2020
+
+* No result at all in the simple task of decoding: ADJ vs NN ... Need more epochs? Do across subject?
+* WHat else? How could we possibly decode semantic features if we can't discriminate word category between both instances...
+* Also big fail in tthe ICA for those files... Something is fishy!!
 
 [1]: ../../Biblio/rabovsky2018.pdf "Link to file"
 [2]: https://www.sciencedirect.com/science/article/pii/S0893608018302223?via%3Dihub "Link to article"

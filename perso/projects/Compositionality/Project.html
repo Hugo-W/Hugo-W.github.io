@@ -68,6 +68,8 @@
 <li>add reservoir networks inside those SG, DORA, …?</li>
 <li>VAE for sentence representations</li>
 </ul>
+<p><em>10/11/20</em> : This is a new proposition and results from a <a href="https://www.researchgate.net/publication/345184917_Overt_and_covert_prosody_are_reflected_in_neurophysiological_responses_previously_attributed_to_grammatical_processing">recent paper</a> (sept. 2020) showing the confound between prosody and syntactic cues, in a way diminishing the impact of Ding and Peoppel 2016’s paper on syntax. It has to be kept in mind for my publication of personal paper 2, or pfuture work on <em>merge</em>/composition of syntax?</p>
+<p><img src="/assets/Prosody_vs_Syntax.jpg" alt="Schematic of the proposition by A. Glushko, 2020" />}{width=33%}</p>
 <h3 id="project-1-toy-model-of-composition">Project 1: Toy Model of composition</h3>
 <p>Hierarchical representations are embedded in the neural trajectories, in their dynamics.</p>
 <p>Test <em>hierarchy</em> of reservoir networks (ref: <a href="https://www.sciencedirect.com/science/article/pii/S0893608018302223?via%3Dihub" title="Link to article">deep echo state networks</a>) to achieve different scales (bottom &gt; acoustic, high &gt; syntactic). beta / delta coupling?</p>
@@ -95,6 +97,7 @@
 <li>67% of unique adjectives, some more repeats (max repeat for “old”, 8 times, then “few”, “little”, “own”, “female”</li>
 </ul>
 <p>There could be much more added to this namely constituents such as <code>ADV-V</code>, etc… This has been discussed with <em>Ryan</em>, the project then also touches ideas from composition of <em>meaning</em> and semantics.</p>
+<p><code>ADV-V</code> are quite difficult to track in the parse tree, and it seems also that <code>JJ-NN</code> may occur more than it first seem. Going through the constituency parse tree might not be solution… Maybe better to go through a dependency graph? Using <code>amod</code> attribute?</p>
 <h4 id="decoding">Decoding</h4>
 <p>It seems unlikely to be able to classify individual words, so one better idea could be to classify/decode <strong>animacy</strong> or <strong>word category</strong> from either the entire <strong>2 words phrase</strong> or from the <strong>adjective alone</strong>.</p>
 <p><em>02/11/2020</em> - As seen in <a href="../../Documents/Literature/Composition/Fyshe_etal2019.pdf" title="Link to file">this article</a> we could retrive/decode brain representation of the first word in the representation of the second word within a 2-words compound.</p>
@@ -102,6 +105,7 @@
 <figure>
 <img src="/assets/TGM_ADJ_NOUN_Fysche2019.png" style="width:75.0%" alt="Temporal Generalisation" /><figcaption aria-hidden="true">Temporal Generalisation</figcaption>
 </figure>
+<p><em>10/11/2020</em>: So far, big fail at decoding only ADj vs NN in ERP and temporal generalisation (multivariate decoding for each lag)…. Big Big Fail.</p>
 <h4 id="role-of-jj-verbal-phrase-vs-noun-phrase">Role of JJ: Verbal phrase vs Noun Phrase</h4>
 <p>Another idea would be to compare adjective attributed to a noun via a verbal phrase or directly as an adjective in a nominal phrase.</p>
 <h3 id="project-3-existing-model-to-adaptlearn-from">Project 3: Existing model to adapt/learn from</h3>
@@ -150,6 +154,24 @@
 <li>Completed some biblio about Fyshe 2019, added the figure to explain the idea</li>
 <li>Started some code to extract also <code>Adv-VB</code> phrases</li>
 <li>decoding started…</li>
+</ul>
+<h4 id="section-5">09/11/2020</h4>
+<ul>
+<li>A bit more work on the MEG analysis for composition, trying to extract the onset of those 2-words phrase structures</li>
+<li>Problem encountered (as in the past already…):
+<ul>
+<li>punctuation still present in parse but not in TextGrid</li>
+<li>“M.” is only “M” in TextGrid (probably not even mapped to “mister” phonemes…)</li>
+<li>Some words are not separated in TextGrid data such as “I’ve”, “Does’nt” but they are in the parse</li>
+<li>Compound word are separated in TextGrid data but not in Stanford parser (tennis-court)</li>
+<li>Some words still have a trailing whitespace in the TextGrid Data!!!</li>
+</ul></li>
+</ul>
+<h4 id="section-6">10/11/2020</h4>
+<ul>
+<li>No result at all in the simple task of decoding: ADJ vs NN … Need more epochs? Do across subject?</li>
+<li>WHat else? How could we possibly decode semantic features if we can’t discriminate word category between both instances…</li>
+<li>Also big fail in tthe ICA for those files… Something is fishy!!</li>
 </ul>
 <footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

@@ -79,7 +79,14 @@
 <img src="/assets/indiv_TRF_envelope.png" alt="Envelope, broadband TRFs for each subjects" /><figcaption aria-hidden="true">Envelope, broadband TRFs for each subjects</figcaption>
 </figure>
 <figure>
-<img src="/assets/grandAvg_TRF_envelope.png" style="width:50.0%" alt="Envelope TRF, grand average" /><figcaption aria-hidden="true">Envelope TRF, grand average</figcaption>
+<img src="/assets/grandAvg_TRF_envelope.png" style="width:33.0%" alt="Envelope TRF, grand average" /><figcaption aria-hidden="true">Envelope TRF, grand average</figcaption>
+</figure>
+<p>Now we are conducting the analysis using the Fieldtrip processed MEG data imported into MNE and Python. We extracted all word onset as well as word frequency and could already see a difference (here for 30 subjects) between sentence and word list conditions. The effect seen in word onset and word frequency must be ran against statistical analysis and also we must now proceed to the reconstruction accuracies with different model to draw further conclusions.</p>
+<figure>
+<img src="/assets/grd_avg_trfs_30subj.png" style="width:50.0%" alt="Grand average (30 subjects) envelope TRFs for each condition" /><figcaption aria-hidden="true">Grand average (30 subjects) envelope TRFs for each condition</figcaption>
+</figure>
+<figure>
+<img src="/assets/wordlvl_trf_sentences.png" style="width:75.0%" alt="Grand average (10 subjects) envelope + word features TRFs (red: word list condition)" /><figcaption aria-hidden="true">Grand average (10 subjects) envelope + word features TRFs (red: word list condition)</figcaption>
 </figure>
 <h3 id="log">Log</h3>
 <h4 id="section">08/10/20</h4>
@@ -99,6 +106,12 @@
 <ul>
 <li>these past days I have finished resampling the few subjects I have and computing TRF across them</li>
 <li>updating logs and adding figures to this readme</li>
+</ul>
+<h4 id="section-3">10/11/20</h4>
+<ul>
+<li>now importing data to MNE from the processed fieldtrip structures</li>
+<li>word onset and word frequency extracted automatically, now using the <strong>SUBTXT-NL</strong> dataset for 1-grams</li>
+<li>Finished to implement the word-level models in the example notebook</li>
 </ul>
 <footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
