@@ -25,7 +25,13 @@ Here is the summary of the different projects running now.
 
 ## Ideas
 
+- Word vectors clustered: gives us a simplified semantic representation to possibly decode for modifer/modifiee
+
 ## Log
 
-Just started this...
+### 24/11/2020
+
+Continued implementation of [RNNLM](https://github.com/Hugo-W/NNLM/pyLM) (yes back to basics...), in view to integrate the VAE on sentences.
+
+Also continued quite a lot on the phase dependent TRF project.
 

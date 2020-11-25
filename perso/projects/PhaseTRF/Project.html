@@ -50,17 +50,27 @@
 <img src="/assets/TRFs_2PhaseSet_fastDriver.png" alt="TRFs to slow (or driver to fast)" /><figcaption aria-hidden="true">TRFs to slow (or driver to fast)</figcaption>
 </figure>
 <p>On Figure 2 we see how we fail to recover correctly the two TRFs…</p>
+<p>More work has now been done on the simulation side. I sweeped a range of frequency for the carrier defining the slow phase modulation. But also tried several frequency bandwidth for one of the two TRF giving a sort of threshold that we need indeed very slow phase wave, but also that they might be interference with one or the other TRF for recnstruction. This is still a bit suspicious…</p>
+<p>For the EEG, I tried to extract the phase from the best reconstructing channels. Then the rising and falling phase have been taken on different phases…</p>
 <h3 id="ideas">Ideas</h3>
 <ul>
 <li>Maybe be more careful in the design matrix of how different data portion is inserted?</li>
 <li>Phase modulation de modulation?</li>
 <li>y = TRF(sin 2<em>pi fm</em>t ) * x such as the TRF is <code>f(phi, t)</code>n <span class="math inline">\(f=2\)</span></li>
 </ul>
+<p>Other EEG related ideas: - Take the phase from the connected sensors rather than the best reconstructing ones (so one that have strong PLI to the best ones) - aggregate a measure like <em>frequency assymetry</em> or <em>hemispheric laterality</em> at subject level and do population statistics on those rather than averaging difference TRF (falling-rising) as the latter seems to give only noise…</p>
 <h2 id="log">Log</h2>
 <h4 id="section">28/09/20</h4>
 <ul>
 <li>Can estimate and retrieve the two kernels when limited band signal with frequency contents of TRF higher (higher frequencies) than phase modulation</li>
 <li>Seems to still be problems when aligning the TRFs (tmin, tmax ranges, of reconstruction and simulation kernels…)</li>
+</ul>
+<h4 id="section-1">24/11/20</h4>
+<ul>
+<li>Extended the Toy model to analyse effect on frequency of phase leader signal and bandwidth of TRF target</li>
+<li>Started to dig into the EEG side of it</li>
+<li>Possible link with connectivity measure between brain activity and those TRF</li>
+<li>observed and asymmetry (left-right but also theta/delta) in the phase dependent TRFs</li>
 </ul>
 <footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

@@ -79,6 +79,9 @@ There could be much more added to this namely constituents such as `ADV-V`, etc.
 
 `ADV-V` are quite difficult to track in the parse tree, and it seems also that `JJ-NN` may occur more than it first seem. Going through the constituency parse tree might not be solution... Maybe better to go through a dependency graph? Using `amod` attribute?
 
+_12/11/20_ Yes, we will go through dependency graphs instead of constituent ones. Looking for any kinf of modifier/modifiee cases.
+I will also check how many words need to be used in order to start getting a significant decoding at the subject level for `JJ` vs `NN`...
+
 #### Decoding
 
 It seems unlikely to be able to classify individual words, so one better idea could be to classify/decode **animacy** or **word category** from either the entire **2 words phrase** or from the **adjective alone**.
