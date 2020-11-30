@@ -102,6 +102,7 @@ gulp.task('firewall:encrypt_perso', () => {
 
 gulp.task('firewall:watch', () => {
   gulp.watch('_protected/*.*', gulp.series('firewall:encrypt'));
+  gulp.watch('_protected/perso/*.*', gulp.series('firewall:encrypt_perso'));
 });
 
 gulp.task('firewall', gulp.series('firewall:encrypt', 'firewall:encrypt_perso', 'firewall:watch',() => {}));
