@@ -11,6 +11,7 @@ doc:
 	pandoc -c /assets/custom.css -s -B _includes/banner.html -A _includes/footer.html perso/projects/Compositionality/Ryan/Project.md -t html --mathjax -o perso/projects/Compositionality/Ryan/Project.html
 	pandoc -c /assets/custom.css -s -B _includes/banner.html -A _includes/footer.html perso/projects/MOUS_TRFs/Project.md -t html --mathjax -o perso/projects/MOUS_TRFs/Project.html
 	pandoc -c /assets/custom.css -s -B _includes/banner.html -A _includes/footer.html perso/projects/PhaseTRF/Project.md -t html --mathjax -o perso/projects/PhaseTRF/Project.html
+	pandoc -c /assets/custom.css -s -B _includes/banner.html -A _includes/footer.html perso/projects/NLP/Project.md -t html --mathjax -o perso/projects/NLP/Project.html
 
 encrypt:
 	gulp firewall-nowatch
