@@ -16,6 +16,7 @@ Here is the summary of the different projects running now.
 |Phase dependent TRF||[Log file](/perso/projects/PhaseTRF/Project.html)|Can we find a different TRF depending on the phase of a slowly modulated signal (exogeneous or endogeneous)?|
 |MOUS||[Log file](/perso/projects/MOUS_TRFs/Project.html)|Supervising Sophie on the MOUS data analysis|
 |Network||[Nothing yet](./)|Will work on complex networks/graph theory and functional networks with MEG data|
+|NLP||[Notes](/perso/projects/NLP/Project.html)|Different NLP tools being developped...|
 
 [^1]: Essentially: computational modelling, Kuramoto, Neural networks, and MEG analysis together. See the notes and logs for details.
 
@@ -28,6 +29,10 @@ Here is the summary of the different projects running now.
 - Word vectors clustered: gives us a simplified semantic representation to possibly decode for modifer/modifiee
 
 ## Log
+
+### 30/11/20
+
+Continued the RNNLM. IMplemented some utilites for text cleaning and preprocessing that can be more widely used across my different projects.
 
 ### 24/11/2020
 
