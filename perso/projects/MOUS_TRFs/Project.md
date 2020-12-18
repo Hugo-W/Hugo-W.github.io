@@ -85,3 +85,8 @@ Now we are conducting the analysis using the Fieldtrip processed MEG data import
 * now importing data to MNE from the processed fieldtrip structures
 * word onset and word frequency extracted automatically, now using the **SUBTXT-NL** dataset for 1-grams
 * Finished to implement the word-level models in the example notebook
+
+#### 18/12/20
+
+* Sophie finished most of her code, now going through everyone and comparing score reconstruction, topo, etc...
+* I also implemented a decoder to quickly decode sentence vs list from TRFs, checking the time course of decoding on the way

@@ -46,3 +46,9 @@ Other EEG related ideas:
 * Possible link with connectivity measure between brain activity and those TRF
 * observed and asymmetry (left-right but also theta/delta) in the phase dependent TRFs
 
+#### 18/12/20
+
+* lots of water ran under the bridge: finished to compute reconstruction differences for many phases for each subject, for now looking only at envelopes and taking the phase signal from some other channel PLI related or from best reconstructing channels
+* I observed usually 2 best phase and 2 worst phase clusters, need to run some stats on this
+* difficult to interpret those results
+* TODO: check with linguistic signal as leader phase instead of brain signals
