@@ -84,6 +84,11 @@
 </figure>
 <p>Inference models can be built to estimate Kuramoto model from time-series data, see <a href="../../Documents/Literature/Kuramoto/bayesian_dynamic_model_oscillators_tuto.pdf" title="Link to file">here</a> and <a href="https://laszukdawid.com/2015/05/18/bayesian-inference-in-kuramoto-model/" title="Link to blog article">this blog article</a>.</p>
 <p>I feel like we need to incorporate the idea of <strong>phase-amplitude coupling</strong> though, as seen in <a href="../../Documents/Literature/Kuramoto/Friston_kuramoto_PAC.pdf" title="Link to file">this article with K. Friston</a>.</p>
+<p><em>13/01/2021</em></p>
+<p>An apparent solution to allow slow correlated signal to emerge from such models is to inject time-delays in the coupling between phase oscillators. This idea has been explored by <a href="https://sites.google.com/site/cvjoanacabral/my-codes">Joana Cabral</a> in several of her papers notably: <a href="http://www.sciencedirect.com/science/article/pii/S1053811911003880">Cabral et al.(2011) NeuroImage</a> and <a href="http://www.sciencedirect.com/science/article/pii/S1053811913011968">Cabral et al.(2014) NeuroImage</a>. Her code has been translated in Python too. So the key is to add some delay in the connectivity, which she extract from DTI images, infering them from fibre tract lengths**: <span class="math display">\[
+\dot{\theta_i}(t) = \omega_i + \sum_{i-1}^Nk_{ij}\sin(\theta_j(t-\tau_{ij}) - \theta_i(t)) \\
+\text{where } \tau_{ij} = \frac{V}{L_{ij}}
+\]</span> With <span class="math inline">\(V\)</span> the average speed of information flow/synchronisation spread and <span class="math inline">\(L_{ij}\)</span> the fibre tract length between node <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>.</p>
 <h3 id="project-2-meg-and-eeg-analysis">Project 2: MEG and EEG analysis</h3>
 <ul>
 <li>Find all pairs of word with the structure: <code>N - ADJ</code> or <code>ADJ - N</code></li>
@@ -98,17 +103,29 @@
 </ul>
 <p>There could be much more added to this namely constituents such as <code>ADV-V</code>, etc… This has been discussed with <em>Ryan</em>, the project then also touches ideas from composition of <em>meaning</em> and semantics.</p>
 <p><code>ADV-V</code> are quite difficult to track in the parse tree, and it seems also that <code>JJ-NN</code> may occur more than it first seem. Going through the constituency parse tree might not be solution… Maybe better to go through a dependency graph? Using <code>amod</code> attribute?</p>
-<p><em>12/11/20</em> Yes, we will go through dependency graphs instead of constituent ones. Looking for any kinf of modifier/modifiee cases. I will also check how many words need to be used in order to start getting a significant decoding at the subject level for <code>JJ</code> vs <code>NN</code>…</p>
+<p><em>12/11/20</em> Yes, we will go through dependency graphs instead of constituent ones. Looking for any kind of modifier/modifiee cases. I will also check how many words need to be used in order to start getting a significant decoding at the subject level for <code>JJ</code> vs <code>NN</code>…</p>
 <h4 id="decoding">Decoding</h4>
 <p>It seems unlikely to be able to classify individual words, so one better idea could be to classify/decode <strong>animacy</strong> or <strong>word category</strong> from either the entire <strong>2 words phrase</strong> or from the <strong>adjective alone</strong>.</p>
-<p><em>02/11/2020</em> - As seen in <a href="../../Documents/Literature/Composition/Fyshe_etal2019.pdf" title="Link to file">this article</a> we could retrive/decode brain representation of the first word in the representation of the second word within a 2-words compound.</p>
-<p>The idea, borrowed from the article mentionned above is summarised in the figure below.</p>
+<p><em>02/11/2020</em> - As seen in <a href="../../Documents/Literature/Composition/Fyshe_etal2019.pdf" title="Link to file">this article</a> we could retrieve/decode brain representation of the first word in the representation of the second word within a 2-words compound.</p>
+<p>The idea, borrowed from the article mentioned above is summarised in the figure below.</p>
 <figure>
 <img src="/assets/TGM_ADJ_NOUN_Fysche2019.png" style="width:75.0%" alt="Temporal Generalisation" /><figcaption aria-hidden="true">Temporal Generalisation</figcaption>
 </figure>
 <p><em>10/11/2020</em>: So far, big fail at decoding only ADj vs NN in ERP and temporal generalisation (multivariate decoding for each lag)…. Big Big Fail.</p>
 <h4 id="role-of-jj-verbal-phrase-vs-noun-phrase">Role of JJ: Verbal phrase vs Noun Phrase</h4>
 <p>Another idea would be to compare adjective attributed to a noun via a verbal phrase or directly as an adjective in a nominal phrase.</p>
+<h4 id="on-the-use-of-language-models-transformers-model-and-a-new-python-library">On the use of Language Models: Transformers model and a new python library</h4>
+<p><em>13/01/2021</em></p>
+<p>New possibilities with using state-f-the art models and especially transformers models. These are being made readily available using <a href="https://huggingface.co/transformers/">:hugs: Transformers</a> (<a href="https://arxiv.org/abs/1910.03771" title="Link to Hugging face Transformer article">Wolf et al., 2019</a>) where we can find a huuuge amount of <a href="https://huggingface.co/gpt2?text=A+long+time+ago%2C+">trained models</a> and utility functions and wrappers to fine-tune them and query them for predictions. Some common tasks are explicitly described on their website:</p>
+<ul>
+<li><a href="https://huggingface.co/transformers/task_summary.html#language-modeling">Language modelling</a> , see <a href="https://github.com/huggingface/notebooks/blob/master/examples/language_modeling.ipynb">an example jupyter notebook</a>, or also a set of <a href="https://github.com/huggingface/transformers/tree/master/examples/language-modeling">utilities script</a> for fine tuning</li>
+<li><a href="https://huggingface.co/transformers/task_summary.html#named-entity-recognition">NER</a></li>
+<li><a href="https://huggingface.co/transformers/model_summary.html#autoencoding-models">Autoencoders</a></li>
+<li><a href="https://huggingface.co/transformers/model_summary.html#sequence-to-sequence-models">Seq 2 seq models</a></li>
+</ul>
+<p>With also some nice explanations about <a href="https://huggingface.co/transformers/preprocessing.html#everything-you-always-wanted-to-know-about-padding-and-truncation">padding and trunctaing</a> input sequences. Basically their tokenizer do the job of tokenizing, encoding into integers, and padding and/or truncating sequences.</p>
+<p>A summary of the library’s philosophy can be found <a href="https://huggingface.co/transformers/philosophy.html">here</a>.</p>
+<p>An idea could be to directly used features (see <a href="https://huggingface.co/transformers/main_classes/pipelines.html#featureextractionpipeline">this pipeline</a>) from a pre-trained causal language model like <code>GPT-2</code>or <code>distilBert</code> to get feature sequence time series on which we could run (with FFT for instance) the mapping to symbolic features.</p>
 <h3 id="project-3-existing-model-to-adaptlearn-from">Project 3: Existing model to adapt/learn from</h3>
 <ul>
 <li>VAERNNLM</li>
@@ -125,6 +142,7 @@
 <li><a href="../../Documents/Literature/Kuramoto/bayesian_dynamic_model_oscillators_tuto.pdf" title="Link to file">Article PDF for Bayesian modelling of dynamic systems</a></li>
 <li><a href="../../Documents/Literature/Kuramoto/Friston_kuramoto_PAC.pdf" title="Link to file">Phase Amplitude and Kuramoto models - Friston 2020</a></li>
 <li><a href="../../Documents/Literature/Composition/Fyshe_etal2019.pdf" title="Link to file">Adj-noun phrases in the brain - Fyshe 2019</a></li>
+<li><a href="https://arxiv.org/abs/1910.03771" title="Link to Hugging face Transformer article">HuggingFace’s Transformers: State-of-the-art NLP, 2019</a></li>
 </ul>
 <h2 id="log">Log</h2>
 <h4 id="section">22/09/20</h4>
@@ -173,6 +191,12 @@
 <li>No result at all in the simple task of decoding: ADJ vs NN … Need more epochs? Do across subject?</li>
 <li>WHat else? How could we possibly decode semantic features if we can’t discriminate word category between both instances…</li>
 <li>Also big fail in tthe ICA for those files… Something is fishy!!</li>
+</ul>
+<h4 id="section-7">13/01/2021</h4>
+<ul>
+<li>Added the text about Transformers library :hugs:</li>
+<li>Added corresponding article in biblio for those notes</li>
+<li>Notes about Joana Cabral’s code and work on Kuramoto model with time delays to fit brain network model</li>
 </ul>
 <footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

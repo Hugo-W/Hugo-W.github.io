@@ -63,6 +63,15 @@ Inference models can be built to estimate Kuramoto model from time-series data, 
 
 I feel like we need to incorporate the idea of **phase-amplitude coupling** though, as seen in [this article with K. Friston][5].
 
+_13/01/2021_
+
+An apparent solution to allow slow correlated signal to emerge from such models is to inject time-delays in the coupling between phase oscillators. This idea has been explored by [Joana Cabral](https://sites.google.com/site/cvjoanacabral/my-codes) in several of her papers notably: [Cabral et al.(2011) NeuroImage](http://www.sciencedirect.com/science/article/pii/S1053811911003880) and [Cabral et al.(2014) NeuroImage](http://www.sciencedirect.com/science/article/pii/S1053811913011968). Her code has been translated in Python too. So the key is to add some delay in the connectivity, which she extract from DTI images, infering them from fibre tract lengths**:
+$$
+\dot{\theta_i}(t) = \omega_i + \sum_{i-1}^Nk_{ij}\sin(\theta_j(t-\tau_{ij}) - \theta_i(t)) \\
+\text{where } \tau_{ij} = \frac{V}{L_{ij}}
+$$
+With $V$ the average speed of information flow/synchronisation spread and $L_{ij}$ the fibre tract length between node $i$ and $j$.
+
 ### Project 2: MEG and EEG analysis
 
 * Find all pairs of word with the structure: `N - ADJ` or `ADJ - N`
@@ -79,16 +88,16 @@ There could be much more added to this namely constituents such as `ADV-V`, etc.
 
 `ADV-V` are quite difficult to track in the parse tree, and it seems also that `JJ-NN` may occur more than it first seem. Going through the constituency parse tree might not be solution... Maybe better to go through a dependency graph? Using `amod` attribute?
 
-_12/11/20_ Yes, we will go through dependency graphs instead of constituent ones. Looking for any kinf of modifier/modifiee cases.
+_12/11/20_ Yes, we will go through dependency graphs instead of constituent ones. Looking for any kind of modifier/modifiee cases.
 I will also check how many words need to be used in order to start getting a significant decoding at the subject level for `JJ` vs `NN`...
 
 #### Decoding
 
 It seems unlikely to be able to classify individual words, so one better idea could be to classify/decode **animacy** or **word category** from either the entire **2 words phrase** or from the **adjective alone**.
 
-_02/11/2020_ - As seen in [this article][6] we could retrive/decode brain representation of the first word in the representation of the second word within a 2-words compound.
+_02/11/2020_ - As seen in [this article][6] we could retrieve/decode brain representation of the first word in the representation of the second word within a 2-words compound.
 
-The idea, borrowed from the article mentionned above is summarised in the figure below.
+The idea, borrowed from the article mentioned above is summarised in the figure below.
 
 ![Temporal Generalisation](/assets/TGM_ADJ_NOUN_Fysche2019.png){width=75%}
 
@@ -97,6 +106,23 @@ _10/11/2020_: So far, big fail at decoding only ADj vs NN in ERP and temporal ge
 #### Role of JJ: Verbal phrase vs Noun Phrase
 
 Another idea would be to compare adjective attributed to a noun via a verbal phrase or directly as an adjective in a nominal phrase.
+
+#### On the use of Language Models: Transformers model and a  new python library
+
+_13/01/2021_
+
+New possibilities with using state-f-the art models and especially transformers models. These are being made readily available using [:hugs: Transformers](https://huggingface.co/transformers/) ([Wolf et al., 2019][7]) where we can find a huuuge amount of [trained models](https://huggingface.co/gpt2?text=A+long+time+ago%2C+) and utility functions and wrappers to fine-tune them and query them for predictions. Some common tasks are explicitly described on their website:
+
+- [Language modelling](https://huggingface.co/transformers/task_summary.html#language-modeling) , see [an example jupyter notebook](https://github.com/huggingface/notebooks/blob/master/examples/language_modeling.ipynb), or also a set of [utilities script](https://github.com/huggingface/transformers/tree/master/examples/language-modeling) for fine tuning
+- [NER](https://huggingface.co/transformers/task_summary.html#named-entity-recognition)
+- [Autoencoders](https://huggingface.co/transformers/model_summary.html#autoencoding-models)
+- [Seq 2 seq models](https://huggingface.co/transformers/model_summary.html#sequence-to-sequence-models)
+
+With also some nice explanations about [padding and trunctaing](https://huggingface.co/transformers/preprocessing.html#everything-you-always-wanted-to-know-about-padding-and-truncation) input sequences. Basically their tokenizer do the job of tokenizing, encoding into integers, and padding and/or truncating sequences.
+
+A summary of the library's philosophy can be found [here](https://huggingface.co/transformers/philosophy.html).
+
+An idea could be to directly used features (see [this pipeline](https://huggingface.co/transformers/main_classes/pipelines.html#featureextractionpipeline)) from a pre-trained causal language model like `GPT-2 `or `distilBert` to get feature sequence time series on which we could run (with FFT for instance) the mapping to symbolic features.
 
 ### Project 3: Existing model to adapt/learn from
 
@@ -114,6 +140,7 @@ Another idea would be to compare adjective attributed to a noun via a verbal phr
 * [Article PDF for Bayesian modelling of dynamic systems][4]
 * [Phase Amplitude and Kuramoto models - Friston 2020][5]
 * [Adj-noun phrases in the brain - Fyshe 2019][6]
+* [HuggingFace's Transformers: State-of-the-art NLP, 2019][7]
 
 ## Log
 
@@ -162,9 +189,18 @@ Another idea would be to compare adjective attributed to a noun via a verbal phr
 * WHat else? How could we possibly decode semantic features if we can't discriminate word category between both instances...
 * Also big fail in tthe ICA for those files... Something is fishy!!
 
+#### 13/01/2021
+
+- Added the text about Transformers library :hugs:
+- Added corresponding article in biblio for those notes
+- Notes about Joana Cabral's code and work on Kuramoto model with time delays to fit brain network model
+
 [1]: ../../Biblio/rabovsky2018.pdf "Link to file"
 [2]: https://www.sciencedirect.com/science/article/pii/S0893608018302223?via%3Dihub "Link to article"
 [3]: https://laszukdawid.com/2015/05/18/bayesian-inference-in-kuramoto-model/ "Link to blog article"
 [4]: ../../Documents/Literature/Kuramoto/bayesian_dynamic_model_oscillators_tuto.pdf "Link to file"
 [5]: ../../Documents/Literature/Kuramoto/Friston_kuramoto_PAC.pdf "Link to file"
 [6]: ../../Documents/Literature/Composition/Fyshe_etal2019.pdf "Link to file"
+
+[ 7 ]: https://arxiv.org/abs/1910.03771 "Link to Hugging face Transformer article"
+

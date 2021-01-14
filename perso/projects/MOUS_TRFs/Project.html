@@ -44,7 +44,8 @@
 </nav>
 <h2 id="the-dataset">The dataset</h2>
 <p>First of all, find attached an overview I did of info on the data set. There is some information about the annotations and materials, as well as brief summaries of previous publications. A crucial thing with respect to the auditory stimuli is that no one has been able to contrast the word lists and the sentences, because of the large auditory response. I think the TRFs could prove a great opportunity to be the first ones here :-)</p>
-<p>Here is the link to the Donders repository of the dataset: <a href="https://data.donders.ru.nl/collections/di/dccn/DSC_3011020.09_236?0">https://data.donders.ru.nl/collections/di/dccn/DSC_3011020.09_236?0</a></p>
+<p>Here is the link to the Donders repository of the dataset: <a href="https://data.donders.ru.nl/collections/di/dccn/DSC_3011020.09_236?0">https://data.donders.ru.nl/collections/di/dccn/DSC_3011020.09_236?0</a>.</p>
+<p>The dataset collection is described in the published article from <span class="citation" data-cites="Schoffelen2019">@Schoffelen2019</span>.</p>
 <p><strong>Plans for the project</strong>:</p>
 <p>The idea Andrea and I have, consists of three parts.</p>
 <ol type="1">
@@ -61,14 +62,16 @@
 <li><del>No artifact rejection</del></li>
 <li><del>Artifact rejection, but keeping only intact trials</del></li>
 <li><del>Determine one lambda</del> (lambda = mean(eig(Xt*X)))</li>
-<li>new pe-processing pipeline (reject trials and channels based on extreme values)</li>
-<li>Preictor spike funcitons</li>
+<li><del>new pe-processing pipeline (reject trials and channels based on extreme values)</del></li>
+<li><del>Predictor spike funcitons</del></li>
+<li>Finish plots, and compare theta, theta power and delta as in <span class="citation" data-cites="Donhauser2020">[@Donhauser2020]</span></li>
 </ol></li>
 <li>Hugo:
 <ol type="1">
 <li><del>Look at data for 1 participant</del></li>
 <li><del>Find &amp; forward paper on envelope predictor</del></li>
 <li><del>sum of matrices by block</del></li>
+<li>Implement routines for source localization</li>
 </ol></li>
 </ul>
 <h2 id="work-in-progress">Work in progress</h2>
@@ -88,7 +91,14 @@
 <figure>
 <img src="/assets/wordlvl_trf_sentences.png" style="width:75.0%" alt="Grand average (10 subjects) envelope + word features TRFs (red: word list condition)" /><figcaption aria-hidden="true">Grand average (10 subjects) envelope + word features TRFs (red: word list condition)</figcaption>
 </figure>
-<h3 id="log">Log</h3>
+<h3 id="decoding">Decoding</h3>
+<p>I (Hugo) tried to implement a TRF-based decoder, with the aim of decoding the condition: Word list vs Sentence using only the reconstruction accuracy of the TRF models.</p>
+<p>This can then be achieved using different time windows for the TRF. We therefore have a pair of model set (word list and sentence TRF model, each with all feature sets<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>) for each time windows ([-100,0], [0, 100], etc…) and the decoding accuracy can be computed per time slices. For each feature set and each time slices we therefore have a different accuracy, see <span class="citation" data-cites="fig:decoding">[@fig:decoding]</span>.</p>
+<p>At each time slice, we can compute the contribution of each model. For instance it may be that all three models<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> have similar accuracies, then that implies that the envelope feature is the main “responsible” for reconstructing and then decoding the condition for that given time window, this is also shown on <span class="citation" data-cites="fig:decoding">[@fig:decoding]</span>.</p>
+<figure>
+<img src="/assets/timed_decoding_withCamembert.png" id="fig:decoding" style="width:33.0%" alt="Decoding accuracy, through time. The pie chatts indicate the proportion of explained accuracies above significance per feature set." /><figcaption aria-hidden="true">Decoding accuracy, through time. The pie chatts indicate the proportion of explained accuracies above significance per feature set.</figcaption>
+</figure>
+<h2 id="log">Log</h2>
 <h4 id="section">08/10/20</h4>
 <ul>
 <li>implemented some code in the notebook to get the events, corresponding stimulus id, and load + resample meg data</li>
@@ -118,6 +128,18 @@
 <li>Sophie finished most of her code, now going through everyone and comparing score reconstruction, topo, etc…</li>
 <li>I also implemented a decoder to quickly decode sentence vs list from TRFs, checking the time course of decoding on the way</li>
 </ul>
+<h4 id="section-5">07/01/21</h4>
+<ul>
+<li>Updated this file with figures from time decoder and accompanying text</li>
+</ul>
+<h2 id="bibliography">Bibliography</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>feature sets: envelope, env + word onsets, env + wo + word frequency<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>feature sets: envelope, env + word onsets, env + wo + word frequency<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
 

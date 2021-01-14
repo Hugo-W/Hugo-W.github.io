@@ -7,13 +7,16 @@ geometry: margin=2cm
 urlcolor: blue
 toc: true
 toc-depth: 3
+bibliography: biblio.bib
 ---
 
 ## The dataset
 
 First of all, find attached an overview I did of info on the data set. There is some information about the annotations and materials, as well as brief summaries of previous publications. A crucial thing with respect to the auditory stimuli is that no one has been able to contrast the word lists and the sentences, because of the large auditory response. I think the TRFs could prove a great opportunity to be the first ones here :-)
 
-Here is the link to the Donders repository of the dataset: [https://data.donders.ru.nl/collections/di/dccn/DSC_3011020.09_236?0](https://data.donders.ru.nl/collections/di/dccn/DSC_3011020.09_236?0)
+Here is the link to the Donders repository of the dataset: [https://data.donders.ru.nl/collections/di/dccn/DSC_3011020.09_236?0](https://data.donders.ru.nl/collections/di/dccn/DSC_3011020.09_236?0).
+
+The dataset collection is described in the published article from @Schoffelen2019.
  
 **Plans for the project**:
 
@@ -33,12 +36,14 @@ We agreed that doing a sentence/word list comparison would be possible if we use
     1. ~~No artifact rejection~~
     2. ~~Artifact rejection, but keeping only intact trials~~
     3. ~~Determine one lambda~~ (lambda = mean(eig(Xt*X)))
-    4. new pe-processing pipeline (reject trials and channels based on extreme values)
-    5. Preictor spike funcitons
+    4. ~~new pe-processing pipeline (reject trials and channels based on extreme values)~~
+    5. ~~Predictor spike funcitons~~
+    6. Finish plots, and compare theta, theta power and delta as in [@Donhauser2020]
 - Hugo:
     1. ~~Look at data for 1 participant~~
     2. ~~Find & forward paper on envelope predictor~~
     3. ~~sum of matrices by block~~
+    4. Implement routines for source localization
     
 
 
@@ -60,7 +65,19 @@ Now we are conducting the analysis using the Fieldtrip processed MEG data import
 
 ![Grand average (10 subjects) envelope + word features TRFs (red: word list condition)](/assets/wordlvl_trf_sentences.png){width=75%}
 
-### Log
+### Decoding
+
+I (Hugo) tried to implement a TRF-based decoder, with the aim of decoding the condition: Word list vs Sentence using only the reconstruction accuracy of the TRF models.
+
+This can then be achieved using different time windows for the TRF. We therefore have a pair of model set (word list and sentence TRF model, each with all feature sets[^1]) for each time windows ([-100,0], [0, 100], etc...) and the decoding accuracy can be computed per time slices. For each feature set and each time slices we therefore have a different accuracy, see [@fig:decoding].
+
+At each time slice, we can compute the contribution of each model. For instance it may be that all three models[^1] have similar accuracies, then that implies that the envelope feature is the main "responsible" for reconstructing and then decoding the condition for that given time window, this is also shown on [@fig:decoding].
+
+![Decoding accuracy, through time. The pie chatts indicate the proportion of explained accuracies above significance per feature set.](/assets/timed_decoding_withCamembert.png){width=33% #fig:decoding}
+
+[^1]: feature sets: envelope, env + word onsets, env + wo + word frequency
+
+## Log
 
 #### 08/10/20
 
@@ -90,3 +107,9 @@ Now we are conducting the analysis using the Fieldtrip processed MEG data import
 
 * Sophie finished most of her code, now going through everyone and comparing score reconstruction, topo, etc...
 * I also implemented a decoder to quickly decode sentence vs list from TRFs, checking the time course of decoding on the way
+
+#### 07/01/21
+
+* Updated this file with figures from time decoder and accompanying text
+
+## Bibliography

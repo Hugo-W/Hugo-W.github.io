@@ -43,22 +43,24 @@
 <h2 id="notes">Notes</h2>
 <p>Trying to recover the <em>different</em> TRFs, one is generating response for a certain phase of an external diving signal, and the other TRF during another phase of that driver.</p>
 <p>If the driver is <strong>slower than the TRFs</strong>, then it sort of works.</p>
-<figure>
-<img src="/assets/TRFs_2PhaseSet.png" alt="TRFs fast enough" /><figcaption aria-hidden="true">TRFs fast enough</figcaption>
-</figure>
-<figure>
-<img src="/assets/TRFs_2PhaseSet_fastDriver.png" alt="TRFs to slow (or driver to fast)" /><figcaption aria-hidden="true">TRFs to slow (or driver to fast)</figcaption>
-</figure>
+<p><img src="/assets/TRFs_2PhaseSet.png" alt="TRFs fast enough" style="zoom:67%;" /></p>
+<p><img src="/assets/TRFs_2PhaseSet_fastDriver.png" alt="TRFs to slow (or driver to fast)" style="zoom: 67%;" /></p>
 <p>On Figure 2 we see how we fail to recover correctly the two TRFs…</p>
-<p>More work has now been done on the simulation side. I sweeped a range of frequency for the carrier defining the slow phase modulation. But also tried several frequency bandwidth for one of the two TRF giving a sort of threshold that we need indeed very slow phase wave, but also that they might be interference with one or the other TRF for recnstruction. This is still a bit suspicious…</p>
+<p>More work has now been done on the simulation side. I swept a range of frequency for the carrier defining the slow phase modulation. But also tried several frequency bandwidth for one of the two TRF giving a sort of threshold that we need indeed very slow phase wave, but also that they might be interference with one or the other TRF for reconstruction. This is still a bit suspicious…</p>
 <p>For the EEG, I tried to extract the phase from the best reconstructing channels. Then the rising and falling phase have been taken on different phases…</p>
+<p>We can see that the reconstruction is polarized indeed, there exists a cluster phases for which it seems that “rising is better than falling phases”:</p>
+<figure>
+<img src="/assets/Score_based/PhaseScore_P05_14072016.png" alt="Reconstruction accuracy per phase bin, in blue rising phase is leading, in red, falling phase is leading." /><figcaption aria-hidden="true">Reconstruction accuracy per phase bin, in blue rising phase is leading, in red, falling phase is leading.</figcaption>
+</figure>
+<p>Also we can observe for the two sets of TRF a different in their time course as well as frequency spectrum:</p>
+<p><img src="/assets/Score_based/PhaseTRF_P05_14072016.png" alt="TRF for rising and falling phase, as well as corresponding spectrum for each sensor." style="zoom: 67%;" /></p>
 <h3 id="ideas">Ideas</h3>
 <ul>
 <li>Maybe be more careful in the design matrix of how different data portion is inserted?</li>
 <li>Phase modulation de modulation?</li>
-<li>y = TRF(sin 2<em>pi fm</em>t ) * x such as the TRF is <code>f(phi, t)</code>n <span class="math inline">\(f=2\)</span></li>
+<li><span class="math inline">\(y = TRF(sin (2*\pi f_m*t )) * x\)</span> such as the TRF is <span class="math inline">\(f(\phi, t)\)</span>, <span class="math inline">\(f=2\)</span></li>
 </ul>
-<p>Other EEG related ideas: - Take the phase from the connected sensors rather than the best reconstructing ones (so one that have strong PLI to the best ones) - aggregate a measure like <em>frequency assymetry</em> or <em>hemispheric laterality</em> at subject level and do population statistics on those rather than averaging difference TRF (falling-rising) as the latter seems to give only noise…</p>
+<p>Other EEG related ideas: - <del>Take the phase from the connected sensors rather than the best reconstructing ones (so one that have strong PLI to the best ones)</del> - aggregate a measure like _frequency asymmetry or <em>hemispheric laterality</em> at subject level and do population statistics on those rather than averaging difference TRF (falling-rising) as the latter seems to give only noise…</p>
 <h2 id="log">Log</h2>
 <h4 id="section">28/09/20</h4>
 <ul>
