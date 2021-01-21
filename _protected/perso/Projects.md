@@ -17,6 +17,7 @@ Here is the summary of the different projects running now.
 |MOUS||[Log file](/perso/projects/MOUS_TRFs/Project.html)|Supervising Sophie on the MOUS data analysis|
 |Network||[Nothing yet](./)|Will work on complex networks/graph theory and functional networks with MEG data|
 |NLP||[Notes](/perso/projects/NLP/Project.html)|Different NLP tools being developped...|
+|Predictive Coding||[Notes](/perso/projects/PredictiveCodingforSpeech/Project.html)|PC for speech comprehension|
 
 [^1]: Essentially: computational modelling, Kuramoto, Neural networks, and MEG analysis together. See the notes and logs for details.
 
