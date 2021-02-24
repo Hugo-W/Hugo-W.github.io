@@ -2,6 +2,16 @@
 title: "Predictive Coding for Speech comprehension"
 author: "Hugo Weissbart"
 geometry: margin=2cm
+toc: true
+urlcolor: blue
+linkcolor: blue
+toccolor: 'violet'
+fontsize: 11
+numbersections: true
+date: 10/02/21
+output: 
+    pdf_document:
+        pandoc_args: ["--filter=C:\\pandoc-crossref.exe"]
 ---
 
 This project is a long running one where I look for evidence or counter-evidence for predictive coding mechanisms during speech comprehension. The made idea is that higher level of representations are
@@ -16,6 +26,11 @@ The project will look at every possible testable hypothesis on measured EEG or M
 The first goal is to see how a time resolved accuracy of reconstruction of the acoustic envelope from meeg signals vary with linguistic features.
 
 ### Ideas
+
+- I want to try with:
+  - Entropy
+  - Surprisal _and_ weighted surprisal (by entropy)
+  - KL "update"
 
 ## Log
 

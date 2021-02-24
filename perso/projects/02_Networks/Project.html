@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Hugo Weissbart" />
+  <meta name="dcterms.date" content="2021-10-02" />
+  <title>Functional Networks during Speech processing</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="/assets/custom.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Regular Noise &amp; Random Patterns</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/perso/Projects.html">Projects</a><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<header id="title-block-header">
+<h1 class="title">Functional Networks during Speech processing</h1>
+<p class="author">Hugo Weissbart</p>
+<p class="date">10/02/21</p>
+</header>
+<nav id="TOC" role="doc-toc">
+
+</nav>
+<p>I will try to measure network-level activity related to speech processing. A first natural way to do so will be to extract functional networks, eventually time-varying versions of those, from similarity measures at both the sensor level and at the source level. Then the idea would be to compare the Dutch listening to condition to the French listening condition, and see the difference in network properties, centrality of nodes, modularity and segregation (clustering coefficient, characteristic path length, syncronisation, etc.) using <strong>graph theoretic metrics</strong>.</p>
+<p>A second <em>path</em> of analysis will follo the trail formed by <a href="https://www.sciencedirect.com/science/article/pii/S1053811913011968" title="Joana Cabral&#39;s 2014 paper time-delayed Kuramoto &lt;-&gt; resting state MEG">Cabral J., NeuroImage, 2014</a>: mapping a Kuramoto model to the parcellated brain with MEG activity.</p>
+<h1 id="notes">Notes</h1>
+<h2 id="kuramoto-modelling-and-estimation">Kuramoto modelling and estimation</h2>
+<p>The general idea behind Kuramoto model for biological systems can be read in <a href="../../Documents/Literature/Kuramoto/2010_Essentials_Kuramoto_Neuroscience.pdf">this great review from 2010</a>.</p>
+<p>The hardest part is in the estimaton of Kuramoto parameters given a time-series. For now, I am focusing a few methods, notably:</p>
+<ol type="1">
+<li>Estimating the adjacency matric when everything else is know, using <em>least square</em></li>
+<li>Estimating all the parmaters, time-varying, using <em>bayesian inference</em> <a href="../../Documents/Literature/Kuramoto/Stankovski2014_Article_ATutorialOnTime-evolvingDynami.pdf">see this paper, and other publications from Stankoski or Lunchinsky</a></li>
+</ol>
+<p>Other methods:</p>
+<ul>
+<li><a href="../../Documents/Literature/Kuramoto/InversingKuramotoWithNN.pdf">Inversing Kuramoto model with neural network</a>, which actually starts from the least-square formulation… Code available <a href="https://github.com/mpanaggio/coupled_oscillator_network_model_reconstruction/">here</a></li>
+</ul>
+<p>Using method 1, I was able to reconstruct the adjacency matrix of couplings, but observed a large error (error in the figure is in log scale!) when the coupling constant is increased. Not so much change when the number of nodes is increased though.</p>
+<figure>
+<img src="/assets/error_rdm.png" alt="Error of fit on coupling matrix K with random weigths distribution" /><figcaption aria-hidden="true">Error of fit on coupling matrix K with random weigths distribution</figcaption>
+</figure>
+<h2 id="functional-connectivity-from-meg-data">Functional Connectivity from MEG data</h2>
+<p>I wish to follow methods from <a href="https://www.nature.com/articles/s41562-020-01003-6#Sec2">this paper from Deco’s group (Nature human behaviour, 2021)</a>.</p>
+<h3 id="preprocessing-of-meg-data">Preprocessing of MEG data</h3>
+<p>First preprocessing will be done as follow (quote from <a href="https://www.nature.com/articles/s41562-020-01003-6#Sec2">Deco, 2021</a>):</p>
+<blockquote>
+<p>For each participant, the MEG data were acquired in a single continuous run comprising resting state. As a starting point, we used the preprocessed MEG data from the HCP database. At this level of preprocessing, removal of artefactual independent components, bad samples and channels has already been performed. Following the preprocessing pipeline detailed in ref. 96, MEG data were then downsampled to 250 Hz using an anti-aliasing filter, filtered to remove frequencies below 1 Hz, co-registered with the head models provided by the HCP and source-reconstructed using linearly constrained minimum-variance beamforming97 to the 62 cortical regions of the DK80 parcellation. For each region, a single time series was computed as the first principal component of the voxels within that parcel. Each region’s time series was then standardized to have mean of zero and standard deviation of one, so that the amount of variance was always the same regardless of the depth of the region. To project the results to brain space, we used a weighted mask, where each region had its maximum value at the centre of gravity.</p>
+<p>We did not apply correction for spatial leakage (volume conduction), because the amount of signal removal would have been too large given the number of regions in the parcellation, thus making the rest of the analysis impossible. Although the similarity with the fMRI results suggests that the impact of signal leakage is not too disruptive for the conclusions of this study, this remains a limitation of this work, and future efforts will be dedicated to rigorous assessment of the impact of different approaches to leakage correction on the NDTE metric, as well as to the consideration of ‘softer’ versions of such leakage correction approaches that can be used in this case</p>
+</blockquote>
+<h3 id="normalized-directed-transfer-entropy-ndte">Normalized directed transfer entropy (NDTE)</h3>
+<p>Also from <a href="https://www.nature.com/articles/s41562-020-01003-6#Sec2">this paper</a>.</p>
+<blockquote>
+<p>To establish and investigate the functional hierarchical organization of whole-brain activity, we first need to characterize how different brain regions communicate with each other, that is, to compute the directed flow between regions. We characterize the functional interaction between two brain regions, in a given parcellation, by an information-theoretical statistical criterion that allows us to infer the underlying bidirectional reciprocal communication. The NDTE framework was inspired by the work of Brovelli and colleagues, who used and validated a similar transfer entropy framework for neuroimaging data25. This framework uses a Gaussian approximation, that is, only second-order statistics of the involved entropies, which means, as shown below, that instead of estimating the probabilities, the method estimates the covariance, which massively facilitates computation. Finally, as also outlined below, we add four key elements to this powerful framework: normalization, multiple timepoints in the past, circular surrogates and aggregation of P values to improve the reliability and robustness of the NDTE framework.</p>
+</blockquote>
+<p><strong>Definition:</strong></p>
+<p><span class="math display">\[
+I(Y_{i+1}; X^i~|~Y^i) = H(Y_{i+1}|~Y^i) - H(Y_{i+1}~|~X^i, Y^i)
+\]</span> Where <span class="math inline">\(Y_{i+1}\)</span> is the activity at time <span class="math inline">\({i+1}\)</span>, while <span class="math inline">\(X^i\)</span> is the entire activity spanning a time window of length <span class="math inline">\(T\)</span> up to time <span class="math inline">\(i\)</span>. This measure is <strong>not</strong> symmetrical, allowing for bidirectionnal analysis.</p>
+<p>It expresses the statistical dependence between the past of <span class="math inline">\(X\)</span> and the future of <span class="math inline">\(Y\)</span> (hence it is a “strong” form of Granger causality).</p>
+<p>To facilitate computation, we can assume a gaussian approximation of neural activity, leading to an estimation of co-dependencies up to only the second-order statistics. Computationally, this allows us to use covariance matrices, and fast linear algebra to compute and estimate entropy of different signals (as the entropy of a gaussian random variable if basically affine in <span class="math inline">\(log\)</span> of the determinant of its covariance matrix).</p>
+<p>In order to compare these different weights, one need to normalise these information theoretical measures.</p>
+<p><strong>Normalisation</strong></p>
+<p><span class="math display">\[
+F_{XY} = \frac{I(Y_{i+1}~;~ X^i~|~Y^i)}{I(Y_{i+1}~;~ X^i,Y^i)}\\
+ = \frac{I(Y_{i+1}~;~ X^i~|~Y^i)}{I(Y_{i+1}~;~ Y^i) + I(Y_{i+1}~;~ X^i|Y^i)}\\
+\]</span></p>
+<p>See also <a href="https://www.sciencedirect.com/science/article/pii/S1053811913009191#f0005">phase transfer entropy</a>.</p>
+<h2 id="ideas">Ideas</h2>
+<p>Use DEM (Dynamic Expected Maximisation, from Friston’s SPM) to fit both phase <strong>and</strong> amplitude in a Phase-Amplitude coupling model of coupled dynamics <a href="https://github.com/allavailablepubliccode/Phase-Amplitude/blob/master/DEM_coupled_oscillators.m">see the code here</a>.</p>
+<p>Carefully address methods for transfer entropy (directed if possible), and build functional connectivity from this.</p>
+<h1 id="log">Log</h1>
+<ul>
+<li><strong>15/02/21</strong> reading a lot about functional network, non linear dynamics and complex system, especially following the group of G. Deco (Barcelona), after going through <a href="https://www.sciencedirect.com/science/article/pii/S1053811913011968" title="Joana Cabral&#39;s 2014 paper time-delayed Kuramoto &lt;-&gt; resting state MEG">J. Cabral 2014’s paper</a> on time-delayed Kuramoto model…. Discovered some interesting modelling of generalised Ising model to assess brain activity, <a href="https://www.sciencedirect.com/science/article/pii/S1053811913009191#f0005">phase Transfer entropy</a>, simply computed from phase from Hilbert and some appropriate binning…</li>
+</ul>
+<footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Regular Noise &amp; Random Patterns</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Regular Noise &amp; Random Patterns</li><li><a class="u-email" href="mailto:hugo.<surname> @ gmail.com">hugo.<surname> @ gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+        <li><a href="https://github.com/Hugo-W"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Hugo-W</span></a></li>
+        <li><div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="https://orcid.org/0000-0003-2820-3865" href="https://orcid.org/0000-0003-2820-3865" target="orcid.widget" rel="me noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">ORCID</a></div></li>
+      </ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Small stock of personal resources, ideas and wand-err.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>

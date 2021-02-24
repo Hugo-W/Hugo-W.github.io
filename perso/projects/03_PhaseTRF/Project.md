@@ -2,6 +2,16 @@
 title: "Phase dependent Responses"
 author: "Hugo Weissbart"
 geometry: margin=2cm
+toc: true
+urlcolor: blue
+linkcolor: blue
+toccolor: 'violet'
+fontsize: 11
+numbersections: true
+date: 10/02/21
+output: 
+    pdf_document:
+        pandoc_args: ["--filter=C:\\pandoc-crossref.exe"]
 ---
 
 ## Notes

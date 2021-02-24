@@ -5,6 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Hugo Weissbart" />
+  <meta name="dcterms.date" content="2021-10-02" />
   <title>Predictive Coding for Speech comprehension</title>
   <style>
     code{white-space: pre-wrap;}
@@ -38,13 +39,25 @@
 <header id="title-block-header">
 <h1 class="title">Predictive Coding for Speech comprehension</h1>
 <p class="author">Hugo Weissbart</p>
+<p class="date">10/02/21</p>
 </header>
+<nav id="TOC" role="doc-toc">
+
+</nav>
 <p>This project is a long running one where I look for evidence or counter-evidence for predictive coding mechanisms during speech comprehension. The made idea is that higher level of representations are leveraging <em>updates</em> by predicting neural activity representing lower levels. This should happen between every level of the hierarchy. As an example, if a word is strongly expected/predicted but another word, more suprising, occurs, then this should elicit a strong prediction error that will be passed up the hierarchy (from acoustic to word-level representations).</p>
 <p>The project will look at every possible testable hypothesis on measured EEG or MEG activity as well as putative computational models implementing such mechanisms.</p>
 <h2 id="testing-the-theory-using-meeg">Testing The theory using MEEG</h2>
 <h3 id="relationship-between-reconstruction-accuracy-of-acoustic-features-and-linguistic-features">Relationship between reconstruction accuracy of acoustic features and linguistic features</h3>
 <p>The first goal is to see how a time resolved accuracy of reconstruction of the acoustic envelope from meeg signals vary with linguistic features.</p>
 <h3 id="ideas">Ideas</h3>
+<ul>
+<li>I want to try with:
+<ul>
+<li>Entropy</li>
+<li>Surprisal <em>and</em> weighted surprisal (by entropy)</li>
+<li>KL “update”</li>
+</ul></li>
+</ul>
 <h2 id="log">Log</h2>
 <footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
