@@ -50,6 +50,8 @@ function draw() {
     pop();
 
     noStroke();
+    fill(color(0x11, 0x11, 0x11));
+    rect(0,0, 100, 20);
     fill(255);
     text("FPS: " + int(frameRate()), 10, 15);
 }
