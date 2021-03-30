@@ -8,13 +8,13 @@ function setup() {
     initializeFields();
     createCanvas(800, 600);
     background(color(0x11, 0x11, 0x11));
-    stroke(color(0x52, 0x70, 0xB9, 50));
-    noFill();
     frameRate(500);
     set = 0;
 }
 
 function draw() {
+    stroke(color(0x52, 0x70, 0xB9, 50));
+    noFill();
     var t = float(frameCount);
     var periodX = 300;
     var periodY = 30;
@@ -49,7 +49,9 @@ function draw() {
     }
     pop();
 
-    text("FPS: " + toString(frameRate()), 10, 10);
+    noStroke();
+    fill(255);
+    text("FPS: " + int(frameRate()), 10, 15);
 }
 
 function initializeFields() {
