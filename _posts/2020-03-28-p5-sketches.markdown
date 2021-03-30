@@ -69,3 +69,7 @@ Some sound vizualization from microphone or sound file...
 ## 1D CA
 
 [Sketch](/p5sketch/CA_1D/)
+
+## Radial beauty
+
+[Sketch](/p5sketch/RadialBeauty/)
