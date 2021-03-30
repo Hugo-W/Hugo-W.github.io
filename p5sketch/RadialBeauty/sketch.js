@@ -46,12 +46,15 @@ function draw() {
             cos(t / 60) * 200 + cos(t / 30) * 30
             );
     }
+
+    text("FPS: " + toString(frameRate()), -width/2 +10, -height/2 + 10);
 }
 
 function initializeFields() {
 }
 
 function mousePressed() {
+    background(color(0x11, 0x11, 0x11));
     set += 1;
     set = set % 3;
 }
