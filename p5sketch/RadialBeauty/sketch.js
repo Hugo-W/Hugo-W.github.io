@@ -23,6 +23,7 @@ function draw() {
     var periodRot = 100;
     var ampX = 200;
     var ampY = 300;
+    push();
     translate(width / 2, height / 2);
     rotate(t / 200);
 
@@ -46,8 +47,9 @@ function draw() {
             cos(t / 60) * 200 + cos(t / 30) * 30
             );
     }
+    pop();
 
-    text("FPS: " + toString(frameRate()), -width/2 +10, -height/2 + 10);
+    text("FPS: " + toString(frameRate()), 10, 10);
 }
 
 function initializeFields() {
