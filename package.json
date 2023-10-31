@@ -4,7 +4,7 @@
 	"author": "Hugo W",
 	"description": "t Jekyll posts",
 	"devDependencies": {
-		"crypto-js": "^3.1.9-1",
+		"crypto-js": ">=4.2.0",
 		"fs": "0.0.1-security",
 		"gulp": "^4",
 		"gulp-util": "^3.0.8",
